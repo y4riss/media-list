@@ -12,6 +12,7 @@
           <b-card-text>
             This is a wider card with supporting text as a natural lead-in to additional content.
           </b-card-text>
+            <b-button href="#" variant="primary">Go somewhere</b-button>
         </b-card-body>
       </b-col>
     </b-row>

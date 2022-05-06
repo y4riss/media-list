@@ -1,8 +1,8 @@
 <template>
       <div class="container" ref="container" >
       <b-row >
-        <b-col cols="9"  >
-          <Card v-for="data in cardData" :key="data.id" :img="data.img" :Sbutton="data.showButton" class="my-5 w-50 justify-content-center " ></Card>
+        <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center">
+          <Card v-for="data in cardData" :key="data.id" :img="data.img" :Sbutton="data.showButton" class="my-5 w-100 justify-content-center " ></Card>
         </b-col>
         <b-col cols="3 " style="background:black;" class="ms-auto" >
           <ControlCard @addCard="addCard" @changeBackground="changeBackground"></ControlCard>

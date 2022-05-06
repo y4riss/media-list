@@ -2,7 +2,7 @@
       <div class="container">
       <b-row>
         <b-col cols="9">
-          <Card :img="img"/>
+          <Card :img="img" :Sbutton="true"/>
           <Card :img="img"/>
           <Card :img="img"/>
         </b-col>

@@ -11,19 +11,15 @@
         <b-card-title>
           <input type="text" v-model="title">
        </b-card-title>
-
-<div>
-  <b-form-textarea
-    style="padding : 0"
-    id="textarea-no-resize"
-    placeholder="Fixed height textarea"
-    rows="3"
-    no-resize
-    v-model="text"
-  ></b-form-textarea>
-</div>
-            <b-button href="#" variant="primary">Go somewhere</b-button>
-        </b-card-body>
+        <b-form-textarea
+          style="padding : 0"
+          id="textarea-no-resize"
+          placeholder="Fixed height textarea"
+          rows="3"
+          no-resize
+          v-model="text"
+        ></b-form-textarea>
+        <b-button v-if="Sbutton" href="#" variant="primary">Go somewhere</b-button>
       </b-col>
     </b-row>
   </b-card>
@@ -36,7 +32,7 @@
 
 <script>
 export default {
-    props: ['img'] ,
+    props: ['img' , 'Sbutton'] ,
     data(){
         return{
             text : 'This is a wider card with supporting text as a natural lead-in to additional content,This is a wider card with supporting text as a natural lead-in to additional content',

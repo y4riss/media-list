@@ -1,13 +1,13 @@
 <template>
       <div class="container" ref="container" >
-      <b-row>
-        <b-col cols="9">
-          <Card v-for="data in cardData" :key="data.id" :img="data.img" :Sbutton="data.showButton" class="my-5 " ></Card>
+      <b-row >
+        <b-col cols="9"  >
+          <Card v-for="data in cardData" :key="data.id" :img="data.img" :Sbutton="data.showButton" class="my-5 w-50 justify-content-center " ></Card>
         </b-col>
-        <b-col cols="3" style="background:black;">
+        <b-col cols="3 " style="background:black;" class="ms-auto" >
           <ControlCard @addCard="addCard" @changeBackground="changeBackground"></ControlCard>
         </b-col>
-        </b-row>
+      </b-row>
         
 
       </div>

@@ -3,13 +3,14 @@
       <b-row >
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center">
             <div ref="widthSelector" >
-              <Card v-for="data in filteredCards"  @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton"  class="my-3 justify-content-center ">
+              <Card v-for="data in filteredCards"  @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" class="my-3 justify-content-center ">
                       <b-icon v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false"></b-icon>
               </Card>
             </div>
         </b-col>
         <b-col cols="3 " style="background:rgb(162 162 162);" >
           <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground"></ControlCards>
+          <ControlCard @changeCardOrder="changeCardOrder"></ControlCard>
         </b-col>
       </b-row>
         
@@ -21,24 +22,27 @@
 <script>
 import Card from "./components/Card.vue";
 import ControlCards from "./components/ControlCards.vue";
+import ControlCard from "./components/ControlCard.vue";
 export default {
   components:{
-    Card , ControlCards
+    Card , ControlCards,ControlCard
   },
   data(){
     return{
+      focusOn: null ,
       cardData: [{
       isSet : true,
       img:require('./assets/img1.png') ,
       showButton: true  ,
       showDeleteBtn : false,
-      id: 0 } ,{
+      id: 0 ,
+      imageOrder: 0} ,{
 
       img:require('./assets/img1.png') ,
       isSet : true,
       showButton: false  ,
       showDeleteBtn : false,
-
+      imageOrder: 0,
       id: 1 ,
       }
       ] ,
@@ -53,7 +57,7 @@ export default {
         showButton: false  ,
         isSet : true,
         showDeleteBtn : false,
-
+        imageOrder: 0,
       }
       this.cardData.push(newCard)
       this.idCount++; 
@@ -95,7 +99,7 @@ export default {
       },
       handleFocus(id){
         this.handleDeleteBtn(id) ;
-        ///
+        this.focusOn = id ;
       },
       handleDeleteBtn(id){
           this.cardData.map( (card)=>{
@@ -103,6 +107,17 @@ export default {
             else card.showDeleteBtn = false
           })
          console.log(id)
+      },
+      changeCardOrder(a){
+        console.log(a,this.focusOn);
+        let order = 0 ;
+        if(a === 'right')
+          order = 1 ;
+        {
+         this.cardData.map( (card)=>{
+            if(card.id == this.focusOn) card.imageOrder = order
+          }) 
+        }
       }
     },
 

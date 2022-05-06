@@ -4,10 +4,10 @@
      <slot></slot>
   <b-card no-body class="overflow-hidden" style="max-width: 100%">
     <b-row no-gutters>
-      <b-col >
+      <b-col  :order="imgLeft">
         <b-card-img :src="img" alt="Image" class="rounded-0 " style="height: 100%;"></b-card-img>
       </b-col>
-      <b-col  cols="8 " class="p-3"> 
+      <b-col  cols="8 " class="p-3" > 
         <b-card-title>
         <p contenteditable="true" >{{title}}</p>
        </b-card-title>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-    props: ['img' , 'Sbutton'] ,
+    props: ['img' , 'Sbutton' , 'imgLeft'] ,
     data(){
         return{
             text : 'This is a wider card with supporting text as a natural lead-in to additional content,This is a wider card with supporting text as a natural lead-in to additional content',

@@ -8,7 +8,11 @@
         <b-dropdown-item @click="changeBackground('dark gray')">Dark Gray</b-dropdown-item>
     </b-dropdown>
     </div>
-
+    <div class="d-flex flex-row">
+        <button class="btn btn-light" @click="changeCardWidth('small')">small</button>
+        <button class="btn btn-light" @click="changeCardWidth('medium')">medium</button>
+        <button class="btn btn-light"  @click="changeCardWidth('big')">big</button>
+    </div>
 
 </div>
   
@@ -22,6 +26,9 @@ export default {
         },
         changeBackground(color){
             this.$emit('changeBackground',color)
+        },
+        changeCardWidth (width){
+            this.$emit('changeCardWidth',width)
         }
     }
 }

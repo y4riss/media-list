@@ -2,10 +2,12 @@
       <div class="container" ref="container" >
       <b-row >
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center">
-          <Card v-for="data in cardData" :key="data.id" :img="data.img" :Sbutton="data.showButton" class="my-5 w-100 justify-content-center " ></Card>
+            <div ref="widthSelector">
+            <Card v-for="data in cardData" :key="data.id" :img="data.img" :Sbutton="data.showButton" class="my-3 justify-content-center "></Card>
+            </div>
         </b-col>
         <b-col cols="3 " style="background:black;" class="ms-auto" >
-          <ControlCard @addCard="addCard" @changeBackground="changeBackground"></ControlCard>
+          <ControlCard @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground"></ControlCard>
         </b-col>
       </b-row>
         
@@ -60,11 +62,29 @@ export default {
         this.$refs.container.classList.remove("bg-light");
         this.$refs.container.classList.add("bg-secondary");
       }
+    },
+    changeCardWidth(width){
+      if(width === 'small'){
+        this.$refs.widthSelector.classList.add("w-50");
+        this.$refs.widthSelector.classList.remove("w-75");
+        this.$refs.widthSelector.classList.remove("w-100");
+      }
+      if(width === 'medium'){
+        this.$refs.widthSelector.classList.add("w-75");
+        this.$refs.widthSelector.classList.remove("w-50");
+        this.$refs.widthSelector.classList.remove("w-100");
+      }
+      if(width === 'big'){
+        this.$refs.widthSelector.classList.add("w-100");
+        this.$refs.widthSelector.classList.remove("w-50");
+        this.$refs.widthSelector.classList.remove("w-75");
+      }
+      }
     }
 
   }
 
-}
+
 </script>
 
 <style>

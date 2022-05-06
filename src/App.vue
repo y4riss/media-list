@@ -2,12 +2,10 @@
       <div class="container">
       <b-row>
         <b-col cols="9">
-          <Card :img="img" :Sbutton="true"/>
-          <Card :img="img"/>
-          <Card :img="img"/>
+          <Card v-for="data in cardData" :key="data.id" :img="data.img" :Sbutton="data.showButton" class="my-5"></Card>
         </b-col>
-        <b-col style="background:black;">
-
+        <b-col cols="3" style="background:black;">
+          <ControlCard @addCard="addCard"></ControlCard>
         </b-col>
         </b-row>
       </div>
@@ -16,14 +14,34 @@
 
 <script>
 import Card from "./components/Card.vue";
+import ControlCard from "./components/ControlCard.vue";
 export default {
   components:{
-    Card
+    Card , ControlCard
   },
   data(){
     return{
-      img:require('./assets/img1.png')
-    }
+      cardData: [{
+      img:require('./assets/img1.png') ,
+      showButton: true  ,
+      id: 0 } ,{
+      img:require('./assets/img1.png') ,
+      showButton: false  ,
+      id: 1  }] ,
+      idCount: 3
+    } 
+  },
+  methods: {
+    addCard() {
+      const newCard = {
+        id: this.idCount ,
+        img: require('./assets/img1.png') ,
+        showButton: false  
+      }
+      this.cardData.push(newCard)
+      this.idCount++; 
+    } 
+
   }
 
 }

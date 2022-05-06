@@ -3,7 +3,9 @@
       <b-row >
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center">
             <div ref="widthSelector" >
-            <Card v-for="data in filteredCards" :key="data.id"  :img="data.img" :Sbutton="data.showButton" @deleteCard="data.isSet = false"  class="my-3 justify-content-center "></Card>
+            <Card v-for="data in filteredCards"  @focus="handleDeleteBtn(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton"  class="my-3 justify-content-center ">
+                     <b-icon v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false"></b-icon>
+            </Card>
             </div>
         </b-col>
         <b-col cols="3 " style="background:rgb(162 162 162);" >
@@ -29,11 +31,14 @@ export default {
       isSet : true,
       img:require('./assets/img1.png') ,
       showButton: true  ,
+      showDeleteBtn : false,
       id: 0 } ,{
 
       img:require('./assets/img1.png') ,
       isSet : true,
       showButton: false  ,
+      showDeleteBtn : false,
+
       id: 1 ,
       }
       ] ,
@@ -46,7 +51,9 @@ export default {
         id: this.idCount ,
         img: require('./assets/img1.png') ,
         showButton: false  ,
-        isSet : true
+        isSet : true,
+        showDeleteBtn : false,
+
       }
       this.cardData.push(newCard)
       this.idCount++; 
@@ -86,6 +93,13 @@ export default {
         this.$refs.widthSelector.classList.remove("w-75");
       }
       },
+      handleDeleteBtn(id){
+          this.cardData.map( (card)=>{
+            if(card.id == id) card.showDeleteBtn = true
+            else card.showDeleteBtn = false
+          })
+         console.log(id)
+      }
     },
 
    computed : {

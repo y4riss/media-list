@@ -1,7 +1,7 @@
 <template>
 
-<div>
-     <b-icon icon="trash" aria-hidden="true" @click="deleteCard"></b-icon>
+<div @click="handleDeleteBtn">
+     <slot></slot>
   <b-card no-body class="overflow-hidden" style="max-width: 100%">
     <b-row no-gutters>
       <b-col >
@@ -29,12 +29,12 @@ export default {
     data(){
         return{
             text : 'This is a wider card with supporting text as a natural lead-in to additional content,This is a wider card with supporting text as a natural lead-in to additional content',
-            title : 'Heading'
+            title : 'Heading',
         }
     },
     methods : {
-      deleteCard(){
-        this.$emit('deleteCard')
+      handleDeleteBtn(){
+        this.$emit('focus')
       }
     }
 

@@ -1,5 +1,6 @@
 <template>
 <div>
+    <h4 class="text-light">Media List</h4>
     <button @click="addCard" class="btn btn-light" > Add card</button>
     <div>
     <b-dropdown id="dropdown-1" text="Change background" class="my-2" >
@@ -9,9 +10,9 @@
     </b-dropdown>
     </div>
     <div class="d-flex flex-row">
-        <button class="btn btn-light" @click="changeCardWidth('small')">small</button>
-        <button class="btn btn-light" @click="changeCardWidth('medium')">medium</button>
-        <button class="btn btn-light"  @click="changeCardWidth('big')">big</button>
+        <button class="btn btn-light mx-1" @click="changeCardWidth('small')">small</button>
+        <button class="btn btn-light  mx-1" @click="changeCardWidth('medium')">medium</button>
+        <button class="btn btn-light  mx-1"  @click="changeCardWidth('big')">big</button>
     </div>
 
 </div>

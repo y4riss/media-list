@@ -2,12 +2,12 @@
       <div class="container" ref="container" >
       <b-row >
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center">
-            <div ref="widthSelector">
+            <div ref="widthSelector" >
             <Card v-for="data in cardData" :key="data.id" :img="data.img" :Sbutton="data.showButton" class="my-3 justify-content-center "></Card>
             </div>
         </b-col>
-        <b-col cols="3 " style="background:black;" class="ms-auto" >
-          <ControlCard @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground"></ControlCard>
+        <b-col cols="3 " style="background:rgb(162 162 162);" >
+          <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground"></ControlCards>
         </b-col>
       </b-row>
         
@@ -18,10 +18,10 @@
 
 <script>
 import Card from "./components/Card.vue";
-import ControlCard from "./components/ControlCard.vue";
+import ControlCards from "./components/ControlCards.vue";
 export default {
   components:{
-    Card , ControlCard
+    Card , ControlCards
   },
   data(){
     return{

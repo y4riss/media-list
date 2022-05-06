@@ -5,7 +5,7 @@
   <b-card no-body class="overflow-hidden" style="max-width: 100%">
     <b-row no-gutters>
       <b-col >
-        <b-card-img :src="img" alt="Image" class="rounded-0"></b-card-img>
+        <b-card-img :src="img" alt="Image" class="rounded-0 " style="height: 200px;"></b-card-img>
       </b-col>
       <b-col  cols="8 " class="p-3"> 
         <b-card-title>

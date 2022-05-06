@@ -1,7 +1,7 @@
 <template>
 
 <div>
-
+     <button @click="deleteCard" class="btn btn-light" >delete</button>
   <b-card no-body class="overflow-hidden" style="max-width: 100%">
     <b-row no-gutters>
       <b-col >
@@ -14,9 +14,9 @@
         <p contenteditable="true" >{{text}}</p>
         <b-button v-if="Sbutton" href="#" variant="primary">Go somewhere</b-button>
       </b-col>
+
     </b-row>
   </b-card>
-
 </div>
 
  
@@ -32,11 +32,18 @@ export default {
             title : 'Heading'
         }
     },
-}
+    methods : {
+      deleteCard(){
+        this.$emit('deleteCard')
+      }
+    }
+
+    }
 </script>
 
 <style scoped>
 p{
   outline: none;
 }
+
 </style>

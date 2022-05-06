@@ -3,7 +3,7 @@
       <b-row >
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center">
             <div ref="widthSelector" >
-            <Card v-for="data in cardData" :key="data.id" :img="data.img" :Sbutton="data.showButton" class="my-3 justify-content-center "></Card>
+            <Card v-for="data in filteredCards" :key="data.id"  :img="data.img" :Sbutton="data.showButton" @deleteCard="data.isSet = false"  class="my-3 justify-content-center "></Card>
             </div>
         </b-col>
         <b-col cols="3 " style="background:rgb(162 162 162);" >
@@ -26,12 +26,17 @@ export default {
   data(){
     return{
       cardData: [{
+      isSet : true,
       img:require('./assets/img1.png') ,
       showButton: true  ,
       id: 0 } ,{
+
       img:require('./assets/img1.png') ,
+      isSet : true,
       showButton: false  ,
-      id: 1  }] ,
+      id: 1 ,
+      }
+      ] ,
       idCount: 3
     } 
   },
@@ -40,7 +45,8 @@ export default {
       const newCard = {
         id: this.idCount ,
         img: require('./assets/img1.png') ,
-        showButton: false  
+        showButton: false  ,
+        isSet : true
       }
       this.cardData.push(newCard)
       this.idCount++; 
@@ -79,11 +85,16 @@ export default {
         this.$refs.widthSelector.classList.remove("w-50");
         this.$refs.widthSelector.classList.remove("w-75");
       }
-      }
-    }
+      },
+    },
 
+   computed : {
+    filteredCards(){
+    return this.cardData.filter(card => card.isSet)
+    }
   }
 
+}
 
 </script>
 

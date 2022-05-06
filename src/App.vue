@@ -3,9 +3,9 @@
       <b-row >
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center">
             <div ref="widthSelector" >
-            <Card v-for="data in filteredCards"  @focus="handleDeleteBtn(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton"  class="my-3 justify-content-center ">
-                     <b-icon v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false"></b-icon>
-            </Card>
+              <Card v-for="data in filteredCards"  @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton"  class="my-3 justify-content-center ">
+                      <b-icon v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false"></b-icon>
+              </Card>
             </div>
         </b-col>
         <b-col cols="3 " style="background:rgb(162 162 162);" >
@@ -92,6 +92,10 @@ export default {
         this.$refs.widthSelector.classList.remove("w-50");
         this.$refs.widthSelector.classList.remove("w-75");
       }
+      },
+      handleFocus(id){
+        this.handleDeleteBtn(id) ;
+        ///
       },
       handleDeleteBtn(id){
           this.cardData.map( (card)=>{

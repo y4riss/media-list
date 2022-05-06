@@ -1,7 +1,7 @@
 <template>
 
 <div>
-     <button @click="deleteCard" class="btn btn-light" >delete</button>
+     <b-icon icon="trash" aria-hidden="true" @click="deleteCard"></b-icon>
   <b-card no-body class="overflow-hidden" style="max-width: 100%">
     <b-row no-gutters>
       <b-col >

@@ -1,13 +1,15 @@
 <template>
-      <div class="container">
+      <div class="container" ref="container" >
       <b-row>
         <b-col cols="9">
-          <Card v-for="data in cardData" :key="data.id" :img="data.img" :Sbutton="data.showButton" class="my-5"></Card>
+          <Card v-for="data in cardData" :key="data.id" :img="data.img" :Sbutton="data.showButton" class="my-5 " ></Card>
         </b-col>
         <b-col cols="3" style="background:black;">
-          <ControlCard @addCard="addCard"></ControlCard>
+          <ControlCard @addCard="addCard" @changeBackground="changeBackground"></ControlCard>
         </b-col>
         </b-row>
+        
+
       </div>
     
 </template>
@@ -40,7 +42,25 @@ export default {
       }
       this.cardData.push(newCard)
       this.idCount++; 
-    } 
+    } ,
+    changeBackground(color){
+      if(color === 'white') {
+        this.$refs.container.classList.add("bg-white");
+        this.$refs.container.classList.remove(
+          "bg-light","bg-secondary");
+
+      }
+      else if(color === 'light gray') {
+        this.$refs.container.classList.remove("bg-white");
+        this.$refs.container.classList.add("bg-light");
+        this.$refs.container.classList.remove("bg-secondary");
+      }
+      else {
+        this.$refs.container.classList.remove("bg-white");
+        this.$refs.container.classList.remove("bg-light");
+        this.$refs.container.classList.add("bg-secondary");
+      }
+    }
 
   }
 

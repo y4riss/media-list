@@ -7,11 +7,12 @@
       <b-col >
         <b-card-img :src="img" alt="Image" class="rounded-0"></b-card-img>
       </b-col>
-      <b-col  cols="8"> 
+      <b-col  cols="8 " class="p-3"> 
         <b-card-title>
-          <input type="text" v-model="title">
+          <input type="text" v-model="title" class="border-0">
        </b-card-title>
         <b-form-textarea
+          class="border-0"
           style="padding : 0"
           id="textarea-no-resize"
           placeholder="Fixed height textarea"
@@ -43,15 +44,5 @@ export default {
 </script>
 
 <style scoped>
-.card{
-  padding-right: 5px;
-}
-textarea.form-control{
-  border : none;
-}
-input[type=text]{
-  border : none;
-  outline : none;
-  margin-top : 1em;
-}
+
 </style>

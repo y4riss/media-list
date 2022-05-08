@@ -3,8 +3,8 @@
       <b-row >
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center">
             <div ref="widthSelector" >
-              <Card v-for="data in filteredCards"  @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" class="my-3 justify-content-center" :class="{border:showDeleteBtn}">
-                      <b-icon v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false"></b-icon>
+              <Card v-for="data in filteredCards" @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" :showDeleteBtn="data.showDeleteBtn"  class="my-3 justify-content-center" >
+                      <b-icon ref="icon" v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false" ></b-icon>
               </Card>
             </div>
         </b-col>
@@ -29,6 +29,7 @@ export default {
   },
   data(){
     return{
+      body : null,
       focusOn: null ,
       cardData: [{
       isSet : true,
@@ -64,20 +65,14 @@ export default {
     } ,
     changeBackground(color){
       if(color === 'white') {
-        this.$refs.container.classList.add("bg-white");
-        this.$refs.container.classList.remove(
-          "bg-light","bg-secondary");
+        this.body.style.background = "white"
 
       }
       else if(color === 'light gray') {
-        this.$refs.container.classList.remove("bg-white");
-        this.$refs.container.classList.add("bg-light");
-        this.$refs.container.classList.remove("bg-secondary");
+this.body.style.background = "gray"
       }
       else {
-        this.$refs.container.classList.remove("bg-white");
-        this.$refs.container.classList.remove("bg-light");
-        this.$refs.container.classList.add("bg-secondary");
+this.body.style.background = "#2f2f2f"
       }
     },
     changeCardWidth(width){
@@ -106,10 +101,8 @@ export default {
             if(card.id == id) card.showDeleteBtn = true
             else card.showDeleteBtn = false
           })
-         console.log(id)
       },
       changeCardOrder(a){
-        console.log(a,this.focusOn);
         let order = 0 ;
         if(a === 'right')
           order = 1 ;
@@ -125,6 +118,9 @@ export default {
     filteredCards(){
     return this.cardData.filter(card => card.isSet)
     }
+  },
+  mounted(){
+    this.body = document.body
   }
 
 }

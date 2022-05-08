@@ -1,7 +1,8 @@
 <template>
 
-<div @click="handleDeleteBtn" :class="{border:true}">
+<div @click="handleDeleteBtn" >
      <slot></slot>
+     <div :class="{outsideBorder:showDeleteBtn}">
   <b-card no-body class="overflow-hidden" style="max-width: 100%">
     <b-row no-gutters>
       <b-col  :order="imgLeft">
@@ -17,6 +18,7 @@
 
     </b-row>
   </b-card>
+  </div>
 </div>
 
  
@@ -25,7 +27,7 @@
 
 <script>
 export default {
-    props: ['img' , 'Sbutton' , 'imgLeft'] ,
+    props: ['img' , 'Sbutton' , 'imgLeft','showDeleteBtn'] ,
     data(){
         return{
             text : 'This is a wider card with supporting text as a natural lead-in to additional content,This is a wider card with supporting text as a natural lead-in to additional content',
@@ -36,8 +38,8 @@ export default {
       handleDeleteBtn(){
         this.$emit('focus')
       }
-    }
-
+    },
+    
     }
 </script>
 
@@ -46,4 +48,7 @@ p{
   outline: none;
 }
 
+.outsideBorder{
+  padding : 1em;
+box-shadow: 1px 1px 5px #0cb6cc;}
 </style>

@@ -1,9 +1,10 @@
 <template>
 <div>
-  <h4 class="text-light">Media</h4>
-  <div class="d-flex flex-row">
-        <button class="btn btn-light mx-1" @click="changeCardOrder('left')">image left</button>
-        <button class="btn btn-light  mx-1" @click="changeCardOrder('right')">image right</button>
+  <h4 class="parameter">Media</h4>
+  <div class="d-flex flex-row roww">
+        <p class="parameter-label">Layout</p>
+        <button class="mybtn" @click="changeCardOrder('left')">image left</button>
+        <button class="mybtn" @click="changeCardOrder('right')">image right</button>
   </div>
 
 </div>

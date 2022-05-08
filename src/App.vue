@@ -3,12 +3,12 @@
       <b-row >
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center">
             <div ref="widthSelector" >
-              <Card v-for="data in filteredCards"  @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" class="my-3 justify-content-center ">
+              <Card v-for="data in filteredCards"  @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" class="my-3 justify-content-center" :class="{border:showDeleteBtn}">
                       <b-icon v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false"></b-icon>
               </Card>
             </div>
         </b-col>
-        <b-col cols="3 " style="background:rgb(162 162 162);" >
+        <b-col cols="3 "  style="width: fit-content;" >
           <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground"></ControlCards>
           <ControlCard @changeCardOrder="changeCardOrder"></ControlCard>
         </b-col>
@@ -132,5 +132,11 @@ export default {
 </script>
 
 <style>
+.col-3{
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    background : #3e3e46;
+}
 
 </style>

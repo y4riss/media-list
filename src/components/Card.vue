@@ -1,6 +1,6 @@
 <template>
 
-<div @click="handleDeleteBtn">
+<div @click="handleDeleteBtn" :class="{border:true}">
      <slot></slot>
   <b-card no-body class="overflow-hidden" style="max-width: 100%">
     <b-row no-gutters>

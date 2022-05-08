@@ -10,7 +10,7 @@
         </b-col>
         <b-col cols="3 "  style="width: fit-content;" >
           <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground"></ControlCards>
-          <ControlCard @changeCardOrder="changeCardOrder"></ControlCard>
+          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder"></ControlCard>
         </b-col>
       </b-row>
         

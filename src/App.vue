@@ -11,7 +11,7 @@
         </b-col>
         <b-col cols="3 "  style="width: fit-content;" >
           <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground"></ControlCards>
-          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  ></ControlCard>
+          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton"></ControlCard>
         </b-col>
       </b-row>
         
@@ -62,7 +62,7 @@ export default {
         isSet : true,
         showDeleteBtn : false,
         imageOrder: 0,
-        color : white,
+        color : 'white',
       }
       this.cardData.push(newCard)
       this.idCount++; 
@@ -132,6 +132,14 @@ export default {
             if(card.id == this.focusOn) card.imageOrder = order
           }) 
         }
+      },
+      handleCardButton(action){
+          this.cardData.map(card =>{
+            if(card.id == this.focusOn) {
+              if(action === 'del') card.showButton = false
+              else card.showButton = true
+            }
+          })
       }
     },
 

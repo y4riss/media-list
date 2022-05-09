@@ -16,17 +16,33 @@
     </b-dropdown>
     </div>
 
+          <div class="roww d-flex flex-row">
+                <p class="parameter-label">Button</p>
+        <b-icon ref="icon" @click="handleCardButton('del')" icon="archive-fill" aria-hidden="true"  style="color: #7952b3;cursor : pointer"></b-icon>
+        <b-icon ref="icon"  @click="handleCardButton('add')" icon="plus-lg" aria-hidden="true"  style="color: #7952b3;cursor : pointer"></b-icon>
+        </div>
+
+
+
 </div>
 </template>
 
 <script>
 export default {
+    data(){
+        return{
+            number : 0
+        }
+    },
     methods:{
         changeCardOrder(a){
             this.$emit('changeCardOrder',a);
         },
         changeCardBackground(a){
             this.$emit('changeCardBackground',a)
+        },
+        handleCardButton(action){
+            this.$emit('handleCardButton',action)
         }
     }
 }

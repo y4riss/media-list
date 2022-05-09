@@ -8,7 +8,7 @@
       <b-col  :order="imgLeft">
         <b-card-img :src="img" alt="Image" class="rounded-0 " style="height: 100%;"></b-card-img>
       </b-col>
-      <b-col  cols="8 " class="p-4" > 
+      <b-col  cols="8 " class="p-4 " :class="{}"> 
         <b-card-title>
         <p contenteditable="true" >{{title}}</p>
        </b-card-title>
@@ -27,7 +27,7 @@
 
 <script>
 export default {
-    props: ['img' , 'Sbutton' , 'imgLeft','showDeleteBtn'] ,
+    props: ['img' , 'Sbutton' , 'imgLeft','showDeleteBtn','dark','light','gray'] ,
     data(){
         return{
             text : 'This is a wider card with supporting text as a natural lead-in to additional content,This is a wider card with supporting text as a natural lead-in to additional content',

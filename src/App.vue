@@ -10,7 +10,7 @@
         </b-col>
         <b-col cols="3 "  style="width: fit-content;" >
           <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground"></ControlCards>
-          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder"></ControlCard>
+          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  ></ControlCard>
         </b-col>
       </b-row>
         
@@ -31,6 +31,7 @@ export default {
     return{
       body : null,
       focusOn: null ,
+      color : null,
       cardData: [{
       isSet : true,
       img:require('./assets/img1.png') ,
@@ -69,12 +70,18 @@ export default {
 
       }
       else if(color === 'light gray') {
-this.body.style.background = "gray"
+    this.body.style.background = "gray"
       }
       else {
-this.body.style.background = "#2f2f2f"
+    this.body.style.background = "#2f2f2f"
       }
     },
+    changeCardBackground(color){
+        if(color == 'white'){
+
+        }
+    },
+
     changeCardWidth(width){
       if(width === 'small'){
         this.$refs.widthSelector.classList.add("w-50");

@@ -80,15 +80,20 @@ export default {
       }
     },
     changeCardBackground(color){
-        if(color === 'white'){
-            this.color = 'white'
-        }
-        else if(color === 'light gray'){
-            this.color = 'light gray'
-        }
-        else {
-            this.color = 'dark gray'
-        }
+
+            this.cardData.map( (card)=>{
+            if(card.id == this.focusOn) {
+              if(color === 'white'){
+                  card.color = 'white'
+              }
+              else if(color === 'light gray'){
+                  card.color = 'light gray'
+              }
+              else {
+                  card.color = 'dark gray'
+              }
+            }
+          })
     },
 
     changeCardWidth(width){

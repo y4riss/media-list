@@ -3,12 +3,12 @@
 <div @click="handleDeleteBtn" >
      <slot></slot>
      <div :class="{outsideBorder:showDeleteBtn}">
-  <b-card no-body class="overflow-hidden" style="max-width: 100%">
+  <b-card no-body class="overflow-hidden" style="max-width: 100%" :class="[colorClass.text, colorClass.background ]">
     <b-row no-gutters>
       <b-col  :order="imgLeft" >
         <b-card-img :src="img" alt="Image" class="rounded-0 " style="height: 100%;"></b-card-img>
       </b-col>
-      <b-col  cols="8 " class="p-4 " :class="[colorClass.text , colorClass.background ]"> 
+      <b-col  cols="8 " class="p-4 " > 
         <b-card-title>
         <p contenteditable="true" >{{title}}</p>
        </b-card-title>
@@ -46,26 +46,26 @@ export default {
       },
       handleBackgroudColor(){
         console.log(this.bgcolor,'ff')
-        if (bgcolor === 'white'){
+        if (this.bgcolor === 'white'){
           this.colorClass.text = 'text-dark'
           this.colorClass.background = 'bg-white'
         }
-        else if (bgcolor === 'light gray'){
+        else if (this.bgcolor === 'light gray'){
           this.colorClass.text = 'text-dark'
           this.colorClass.background = 'bg-light'
         }
-        else if (bgcolor === 'dark gray'){
+        else if (this.bgcolor === 'dark gray'){
           this.colorClass.text = 'text-light'
           this.colorClass.background = 'bg-secondary'
         }
         
     }} ,
-    watch : {
-      bgcolor: function () {
-        this.handleBackgroudColor();
+    watch  : {
+      bgcolor : function(){
+        this.handleBackgroudColor()
       }
     }
-    
+  
     }
 </script>
 

@@ -3,7 +3,8 @@
       <b-row >
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center">
             <div ref="widthSelector" >
-              <Card v-for="data in filteredCards" @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" :showDeleteBtn="data.showDeleteBtn"  class="my-3 justify-content-center" >
+              <Card v-for="data in filteredCards" @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" :showDeleteBtn="data.showDeleteBtn"  class="my-3 justify-content-center"
+              :bgcolor="data.color" >
                       <b-icon ref="icon" v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false" ></b-icon>
               </Card>
             </div>
@@ -31,21 +32,22 @@ export default {
     return{
       body : null,
       focusOn: null ,
-      color : null,
       cardData: [{
       isSet : true,
       img:require('./assets/img1.png') ,
       showButton: true  ,
       showDeleteBtn : false,
       id: 0 ,
-      imageOrder: 0} ,{
-
+      imageOrder: 0,
+      color : 'white',} ,
+      {
       img:require('./assets/img1.png') ,
       isSet : true,
       showButton: false  ,
       showDeleteBtn : false,
       imageOrder: 0,
       id: 1 ,
+      color : 'white',
       }
       ] ,
       idCount: 3
@@ -60,6 +62,7 @@ export default {
         isSet : true,
         showDeleteBtn : false,
         imageOrder: 0,
+        color : white,
       }
       this.cardData.push(newCard)
       this.idCount++; 
@@ -77,8 +80,14 @@ export default {
       }
     },
     changeCardBackground(color){
-        if(color == 'white'){
-
+        if(color === 'white'){
+            this.color = 'white'
+        }
+        else if(color === 'light gray'){
+            this.color = 'light gray'
+        }
+        else {
+            this.color = 'dark gray'
         }
     },
 

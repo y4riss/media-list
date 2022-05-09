@@ -5,10 +5,10 @@
      <div :class="{outsideBorder:showDeleteBtn}">
   <b-card no-body class="overflow-hidden" style="max-width: 100%">
     <b-row no-gutters>
-      <b-col  :order="imgLeft">
+      <b-col  :order="imgLeft" >
         <b-card-img :src="img" alt="Image" class="rounded-0 " style="height: 100%;"></b-card-img>
       </b-col>
-      <b-col  cols="8 " class="p-4 " :class="{}"> 
+      <b-col  cols="8 " class="p-4 " :class="[colorClass.text , colorClass.background ]"> 
         <b-card-title>
         <p contenteditable="true" >{{title}}</p>
        </b-card-title>
@@ -26,19 +26,45 @@
 
 
 <script>
+
+
 export default {
-    props: ['img' , 'Sbutton' , 'imgLeft','showDeleteBtn','dark','light','gray'] ,
+    props: ['img' , 'Sbutton' , 'imgLeft','showDeleteBtn','bgcolor'] ,
     data(){
         return{
             text : 'This is a wider card with supporting text as a natural lead-in to additional content,This is a wider card with supporting text as a natural lead-in to additional content',
             title : 'Heading',
+            colorClass: {
+              text: null ,
+              background: null
+            }
         }
     },
     methods : {
       handleDeleteBtn(){
         this.$emit('focus')
+      },
+      handleBackgroudColor(){
+        console.log(this.bgcolor,'ff')
+        if (bgcolor === 'white'){
+          this.colorClass.text = 'text-dark'
+          this.colorClass.background = 'bg-white'
+        }
+        else if (bgcolor === 'light gray'){
+          this.colorClass.text = 'text-dark'
+          this.colorClass.background = 'bg-light'
+        }
+        else if (bgcolor === 'dark gray'){
+          this.colorClass.text = 'text-light'
+          this.colorClass.background = 'bg-secondary'
+        }
+        
+    }} ,
+    watch : {
+      bgcolor: function () {
+        this.handleBackgroudColor();
       }
-    },
+    }
     
     }
 </script>

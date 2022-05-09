@@ -68,16 +68,7 @@ export default {
       this.idCount++; 
     } ,
     changeBackground(color){
-      if(color === 'white') {
-        this.body.style.background = "white"
-
-      }
-      else if(color === 'light gray') {
-    this.body.style.background = "gray"
-      }
-      else {
-    this.body.style.background = "#2f2f2f"
-      }
+        this.body.style.background = color
     },
     changeCardBackground(color){
 

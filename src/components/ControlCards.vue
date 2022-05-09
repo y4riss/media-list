@@ -10,11 +10,7 @@
 
     <div class="roww d-flex flex-row">
         <p class="parameter-label">Background</p>
-    <b-dropdown id="dropdown-1" text="Change Background" class="my-2" >
-        <b-dropdown-item @click="changeBackground('white')">White</b-dropdown-item>
-        <b-dropdown-item @click="changeBackground('light gray')">Light Gray</b-dropdown-item>
-        <b-dropdown-item @click="changeBackground('dark gray')">Dark Gray</b-dropdown-item>
-    </b-dropdown>
+        <input type="color" class="form-control form-control-color border-0" id="exampleColorInput" value="#FFFFFF" @change="changeBackground" style="background: #3e3e46" title="Choose your color">
     </div>
 
     <div class="d-flex flex-row roww">
@@ -38,8 +34,9 @@ export default {
         addCard () {
             this.$emit('addCard') ;
         },
-        changeBackground(color){
-            this.$emit('changeBackground',color)
+        changeBackground(e){
+            console.log(e.target.value);
+            this.$emit('changeBackground',e.target.value)
         },
         changeCardWidth (width){
             this.$emit('changeCardWidth',width)

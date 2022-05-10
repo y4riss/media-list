@@ -10,10 +10,11 @@
     <b-dropdown-item @click="changeText('h6')">header 6 </b-dropdown-item>
   </b-dropdown>
 
-  <b-icon ref="icon" class="icon" variant="light" icon="type-bold" aria-hidden="true"  @click="changeWeight('fw-bold')" ></b-icon>
-  <button @click="changeWeight('fst-italic')">Italic</button>
-  <button @click="changeWeight('text-decoration-underline')">Underline</button>
-    <button @click="changeWeight('text-decoration-line-through')">Line-through</button>
+  <b-icon ref="icon" class="icon me-2" variant="light" icon="type-bold" aria-hidden="true"  @click="changeWeight('fw-bold')" ></b-icon>
+  <b-icon ref="icon" class="icon me-2" variant="light" icon="type-italic" aria-hidden="true"  @click="changeWeight('fst-italic')" ></b-icon>
+  <b-icon ref="icon" class="icon me-2" variant="light" icon="type-underline" aria-hidden="true" @click="changeWeight('text-decoration-underline')" ></b-icon>
+  <b-icon ref="icon" class="icon" variant="light" icon="type-strikethrough" aria-hidden="true" @click="changeWeight('text-decoration-line-through')" ></b-icon>
+
 </div>
 </template>
 

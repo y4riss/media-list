@@ -4,7 +4,7 @@
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center">
             <div ref="widthSelector" >
               <Card v-for="data in filteredCards" @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" :showDeleteBtn="data.showDeleteBtn"  class="my-3 justify-content-center"
-              :bgcolor="data.color" >
+              :bgcolor="data.color" @modifyText="handleText">
                       <b-icon ref="icon" style="cursor:pointer;" v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false" ></b-icon>
               </Card>
             </div>
@@ -12,24 +12,32 @@
         <b-col cols="3 "  style="width: fit-content;" >
           <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground"></ControlCards>
           <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton"></ControlCard>
+          <ControlText v-if="showControlText" @changeText="changeText"></ControlText>
         </b-col>
       </b-row>
       </div>
-    
 </template>
 
 <script>
+
 import Card from "./components/Card.vue";
 import ControlCards from "./components/ControlCards.vue";
 import ControlCard from "./components/ControlCard.vue";
+import ControlText from "./components/ControlText.vue";
+
 export default {
   components:{
-    Card , ControlCards,ControlCard
-  },
+    Card,
+    ControlCards,
+    ControlCard,
+    ControlText
+},
   data(){
     return{
       body : null,
       focusOn: null ,
+      showControlText: null ,
+      selectedText: null ,
       cardData: [{
       isSet : true,
       img:require('./assets/img1.png') ,
@@ -84,7 +92,6 @@ export default {
             }
           })
     },
-
     changeCardWidth(width){
       if(width === 'small'){
         this.$refs.widthSelector.classList.add("w-50");
@@ -129,6 +136,15 @@ export default {
               else card.showButton = true
             }
           })
+      },
+      handleText(e){
+        this.showControlText = true ;
+        this.selectedText = e.target ;
+      },
+      changeText(cls){
+        this.selectedText.className = '';
+        if ( cls !== 'n')
+          this.selectedText.classList.add(cls);
       }
     },
 

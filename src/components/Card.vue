@@ -10,18 +10,15 @@
       </b-col>
       <b-col  cols="8 " class="p-4 " > 
         <b-card-title>
-        <p contenteditable="true" >{{title}}</p>
+        <p contenteditable="true" @dblclick="modifyText">{{title}}</p>
        </b-card-title>
-        <p contenteditable="true" >{{text}}</p>
+        <p contenteditable="true" @dblclick="modifyText">{{text}}</p>
         <b-button v-if="Sbutton" href="#" variant="primary">Go somewhere</b-button>
       </b-col>
-
     </b-row>
   </b-card>
   </div>
 </div>
-
- 
 </template>
 
 
@@ -59,7 +56,12 @@ export default {
           this.colorClass.background = 'bg-secondary'
         }
         
-    }} ,
+    },
+    modifyText (e){
+        this.$emit('modifyText',e) ;
+    },
+    
+    } ,
     watch  : {
       bgcolor : function(){
         this.handleBackgroudColor()

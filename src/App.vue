@@ -10,7 +10,7 @@
             </div>
         </b-col>
         <b-col cols="3 "  style="width: fit-content;" >
-          <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground"></ControlCards>
+          <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
           <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton"></ControlCard>
           <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight"></ControlText>
         </b-col>
@@ -34,6 +34,8 @@ export default {
 },
   data(){
     return{
+      hover : false,
+      previousClass : 'w-100',
       body : null,
       focusOn: null ,
       showControlText: null ,
@@ -92,22 +94,35 @@ export default {
             }
           })
     },
-    changeCardWidth(width){
+    changeCardWidth(width,e){
+
+      if(e.type == 'mouseenter'){
+          this.hover = true
       if(width === 'small'){
+
         this.$refs.widthSelector.classList.add("w-50");
         this.$refs.widthSelector.classList.remove("w-75");
         this.$refs.widthSelector.classList.remove("w-100");
       }
       if(width === 'medium'){
+
         this.$refs.widthSelector.classList.add("w-75");
         this.$refs.widthSelector.classList.remove("w-50");
         this.$refs.widthSelector.classList.remove("w-100");
       }
       if(width === 'big'){
+
         this.$refs.widthSelector.classList.add("w-100");
         this.$refs.widthSelector.classList.remove("w-50");
         this.$refs.widthSelector.classList.remove("w-75");
       }
+      }
+
+      else if (e.type == 'click') {
+        this.previousClass = this.$refs.widthSelector.className
+        this.hover = false
+      }
+      
       },
       handleFocus(id){
         this.handleDeleteBtn(id) ;
@@ -148,6 +163,13 @@ export default {
       },
       changeWeight(cls){
         this.selectedText.classList.toggle(cls)
+      },
+      handleMouseLeave(e){
+          if(this.hover){
+              this.$refs.widthSelector.className = '';
+              this.$refs.widthSelector.classList.add(this.previousClass)
+          }
+          this.hover = false
       }
     },
 

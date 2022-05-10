@@ -15,9 +15,9 @@
 
     <div class="d-flex flex-row roww">
         <p class="parameter-label">Content Width</p>
-        <button class="mybtn " @click="changeCardWidth('small')">small</button>
-        <button class="mybtn" @click="changeCardWidth('medium')">medium</button>
-        <button class="mybtn"  @click="changeCardWidth('big')">big</button>
+        <button class="mybtn " @click="changeCardWidth('small',$event)" @mouseenter="changeCardWidth('small',$event)" @mouseleave="handleMouseLeave">small</button>
+        <button class="mybtn" @click="changeCardWidth('medium',$event)"  @mouseenter="changeCardWidth('medium',$event)" @mouseleave="handleMouseLeave">medium</button>
+        <button class="mybtn"  @click="changeCardWidth('big',$event)"  @mouseenter="changeCardWidth('big',$event)" @mouseleave="handleMouseLeave">big</button>
     </div>
 
 
@@ -38,8 +38,11 @@ export default {
             console.log(e.target.value);
             this.$emit('changeBackground',e.target.value)
         },
-        changeCardWidth (width){
-            this.$emit('changeCardWidth',width)
+        changeCardWidth (width,e){
+            this.$emit('changeCardWidth',width,e)
+        },
+        handleMouseLeave(e){
+            this.$emit('handleMouseLeave',e)
         }
     }
 }

@@ -12,7 +12,7 @@
         <b-col cols="3 "  style="width: fit-content;" >
           <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground"></ControlCards>
           <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton"></ControlCard>
-          <ControlText v-if="showControlText" @changeText="changeText"></ControlText>
+          <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight"></ControlText>
         </b-col>
       </b-row>
       </div>
@@ -145,6 +145,9 @@ export default {
         this.selectedText.className = '';
         if ( cls !== 'n')
           this.selectedText.classList.add(cls);
+      },
+      changeWeight(cls){
+        this.selectedText.classList.toggle(cls)
       }
     },
 

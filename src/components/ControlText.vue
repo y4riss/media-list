@@ -14,7 +14,7 @@
   <b-icon ref="icon" class="icon me-2" variant="light" icon="type-italic" aria-hidden="true"  @click="changeWeight('fst-italic')" ></b-icon>
   <b-icon ref="icon" class="icon me-2" variant="light" icon="type-underline" aria-hidden="true" @click="changeWeight('text-decoration-underline')" ></b-icon>
   <b-icon ref="icon" class="icon" variant="light" icon="type-strikethrough" aria-hidden="true" @click="changeWeight('text-decoration-line-through')" ></b-icon>
-
+  <input type="color" class="form-control form-control-color border-0" id="exampleColorInput" value="#9A58EB" @change="changetextColor" style="background: #3e3e46" title="Choose your color">
 </div>
 </template>
 
@@ -26,6 +26,9 @@ export default {
         },
         changeWeight(a){
           this.$emit('changeWeight',a)
+        },
+        changetextColor(a){
+          this.$emit('changetextColor',a.target.value);
         }
     }
 }

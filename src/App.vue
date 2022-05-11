@@ -12,7 +12,7 @@
         <b-col cols="3 "  style="width: fit-content;" >
           <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
           <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton"></ControlCard>
-          <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight"></ControlText>
+          <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor"></ControlText>
         </b-col>
       </b-row>
       </div>
@@ -79,7 +79,6 @@ export default {
         this.body.style.background = color
     },
     changeCardBackground(color){
-
             this.cardData.map( (card)=>{
             if(card.id == this.focusOn) {
               if(color === 'white'){
@@ -95,7 +94,6 @@ export default {
           })
     },
     changeCardWidth(width,e){
-
       if(e.type == 'mouseenter'){
           this.hover = true
       if(width === 'small'){
@@ -170,9 +168,11 @@ export default {
               this.$refs.widthSelector.classList.add(this.previousClass)
           }
           this.hover = false
+      },
+      changetextColor(clr){
+        this.selectedText.style.color = clr ;
       }
     },
-
    computed : {
     filteredCards(){
     return this.cardData.filter(card => card.isSet)
@@ -181,7 +181,6 @@ export default {
   mounted(){
     this.body = document.body
   }
-
 }
 
 </script>

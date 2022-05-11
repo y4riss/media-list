@@ -98,21 +98,18 @@ export default {
           this.hover = true
       if(width === 'small'){
 
+        this.$refs.widthSelector.className = '';
         this.$refs.widthSelector.classList.add("w-50");
-        this.$refs.widthSelector.classList.remove("w-75");
-        this.$refs.widthSelector.classList.remove("w-100");
       }
       if(width === 'medium'){
-
+        this.$refs.widthSelector.className = '';
         this.$refs.widthSelector.classList.add("w-75");
-        this.$refs.widthSelector.classList.remove("w-50");
-        this.$refs.widthSelector.classList.remove("w-100");
+
       }
       if(width === 'big'){
-
+        this.$refs.widthSelector.className = '';
         this.$refs.widthSelector.classList.add("w-100");
-        this.$refs.widthSelector.classList.remove("w-50");
-        this.$refs.widthSelector.classList.remove("w-75");
+
       }
       }
 

@@ -9,9 +9,9 @@
               </Card>
             </div>
         </b-col>
-        <b-col cols="3 "  style="width: fit-content;" >
+        <b-col cols="3 "   >
           <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
-          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton"></ControlCard>
+          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg"></ControlCard>
           <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor"></ControlText>
         </b-col>
       </b-row>
@@ -36,7 +36,6 @@ export default {
     return{
       hover : false,
       previousClass : 'w-100',
-      body : null,
       focusOn: null ,
       showControlText: null ,
       selectedText: null ,
@@ -76,7 +75,7 @@ export default {
       this.idCount++; 
     } ,
     changeBackground(color){
-        this.body.style.background = color
+        document.body.style.background = color
     },
     changeCardBackground(color){
             this.cardData.map( (card)=>{
@@ -168,6 +167,18 @@ export default {
       },
       changetextColor(clr){
         this.selectedText.style.color = clr ;
+      },
+      uploadImg(e){
+        const image = e.target.files[0]
+        if(image){
+        this.cardData.map(card =>{
+          if(card.id === this.focusOn){
+           card.img = window.URL.createObjectURL(image)
+           return
+           }
+        })
+        }
+
       }
     },
    computed : {
@@ -175,9 +186,6 @@ export default {
     return this.cardData.filter(card => card.isSet)
     }
   },
-  mounted(){
-    this.body = document.body
-  }
 }
 
 </script>
@@ -185,6 +193,7 @@ export default {
 <style>
 .col-3{
     position: fixed;
+    max-width : 290px !important;
     right: 0;
     height: 100vh;
     background : #3e3e46;

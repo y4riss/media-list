@@ -181,6 +181,15 @@ export default {
 
       }
     },
+    mounted(){
+        document.body.addEventListener("click",(e)=>{
+          if(e.altKey){
+            this.handleFocus(null)
+            this.showControlText = null
+            
+          }
+        })
+    },
    computed : {
     filteredCards(){
     return this.cardData.filter(card => card.isSet)

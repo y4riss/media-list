@@ -1,7 +1,7 @@
 <template>
       <div class="container" ref="container" >
-      <b-row >
-        <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center">
+      <b-row>
+        <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center" id="main">
             <div ref="widthSelector" >
               <Card v-for="data in filteredCards" @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" :showDeleteBtn="data.showDeleteBtn"  class="my-3 justify-content-center"
               :bgcolor="data.color" @modifyText="handleText">
@@ -9,7 +9,7 @@
               </Card>
             </div>
         </b-col>
-        <b-col cols="3"   >
+        <b-col cols="3"  class="hide" >
           <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
           <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg"></ControlCard>
           <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor"></ControlText>
@@ -207,5 +207,15 @@ export default {
     height: 100vh;
     background : #3e3e46;
 }
+@media only screen and (max-width: 900px) {
+  .hide 
+  {
+    display: none;
+  }
+  #main{
+    margin:auto
+  }
+}
+
 
 </style>

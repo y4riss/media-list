@@ -9,7 +9,7 @@
               </Card>
             </div>
         </b-col>
-        <b-col cols="3 "   >
+        <b-col cols="3"   >
           <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
           <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg"></ControlCard>
           <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor"></ControlText>
@@ -93,7 +93,7 @@ export default {
           })
     },
     changeCardWidth(width,e){
-      if(e.type == 'mouseenter'){
+      if(e.type === 'mouseenter'){
           this.hover = true
       if(width === 'small'){
 

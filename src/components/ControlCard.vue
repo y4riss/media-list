@@ -9,7 +9,7 @@
         <p class="parameter-label">Background</p>
         <p class="parameter-label">Button</p>
         <p class="parameter-label">Image</p>
-
+        <p class="parameter-label">Border</p>
         </div>
                 
         <div class="right">
@@ -32,6 +32,13 @@
         <input class="form-control form-control-sm" style="width:100%" type="file" id="formFile" accept="image/*" @change="uploadImg">
 
 
+        <div class="borderControl">
+        <input type="number"  min="0" max="30"  @change="handleBorder"/>
+        <span>px</span>
+        </div>
+
+
+
         </div>
        
 
@@ -48,7 +55,8 @@
 export default {
     data(){
         return{
-            number : 0
+            number : 0,
+            width : 0
         }
     },
     methods:{
@@ -63,15 +71,54 @@ export default {
         },
         uploadImg(e){
              this.$emit('uploadImg',e)
+        },
+        handleBorder(e){
+            if(e.target.value < 0) e.target.value = 0
+            else if(e.target.value > 30) e.target.value = 30
+            this.$emit('handleBorder',e)
         }
-    }
+    },
+
 }
 </script>
 
-<style>
+<style scoped>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .icns{
     display: flex;
     justify-content: space-evenly;
     margin : 6px;
+}
+input[type="number"]{
+    box-sizing: content-box;
+    padding: 2px;
+    border: none;
+    outline : none;
+    overflow: hidden;
+    border-radius: 0;
+    background-color: transparent;
+    -moz-appearance: textfield;
+    color : white;
+
+}
+.borderControl{
+    margin-top : 1.2em;
+    border: 1px solid #000000;
+    border-radius: 2px;
+    background-color: #2b2b33;
+    width: 60px;
+    height : 25px;
+    display : flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+span{
+    margin-right: 10px;
+    color: #60606b;
 }
 </style>

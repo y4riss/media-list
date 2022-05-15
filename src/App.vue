@@ -3,7 +3,7 @@
       <b-row>
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center" id="main">
             <div ref="widthSelector" >
-              <Card v-for="data in filteredCards" @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" :showDeleteBtn="data.showDeleteBtn"  class="my-3 justify-content-center"
+              <Card v-for="data in filteredCards" @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" :showDeleteBtn="data.showDeleteBtn" :border="data.border"  class="my-3 justify-content-center"
               :bgcolor="data.color" @modifyText="handleText">
                       <b-icon ref="icon" style="cursor:pointer;" v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false" ></b-icon>
               </Card>
@@ -11,7 +11,7 @@
         </b-col>
         <b-col cols="3"  class="hide" >
           <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
-          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg"></ControlCard>
+          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder"></ControlCard>
           <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor"></ControlText>
         </b-col>
       </b-row>
@@ -40,6 +40,7 @@ export default {
       showControlText: null ,
       selectedText: null ,
       cardData: [{
+      border : 0,
       isSet : true,
       img:require('./assets/img1.png') ,
       showButton: true  ,
@@ -48,6 +49,7 @@ export default {
       imageOrder: 0,
       color : 'white',} ,
       {
+      border : 0,
       img:require('./assets/img1.png') ,
       isSet : true,
       showButton: false  ,
@@ -63,6 +65,7 @@ export default {
   methods: {
     addCard() {
       const newCard = {
+        border : 0,
         id: this.idCount ,
         img: require('./assets/img1.png') ,
         showButton: false  ,
@@ -179,6 +182,12 @@ export default {
         })
         }
 
+      },
+      handleBorder(e){
+        this.cardData.map(card => {
+          if(card.id === this.focusOn)
+          card.border = e.target.value
+        })
       }
     },
     mounted(){

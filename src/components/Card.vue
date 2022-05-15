@@ -1,9 +1,9 @@
 <template>
 
-<div @click="handleDeleteBtn" >
+<div @click="handleDeleteBtn"  >
      <slot></slot>
-     <div :class="{outsideBorder:showDeleteBtn}">
-  <b-card no-body class="overflow-hidden" style="max-width: 100%" :class="[colorClass.text, colorClass.background ]">
+     <div :class="{outsideBorder:showDeleteBtn}" >
+  <b-card no-body class="overflow-hidden" style="max-width: 100%" :class="[colorClass.text, colorClass.background ]" ref="bigDiv" >
     <b-row no-gutters >
       <b-col  :order="imgLeft" sm="12" md="4" >
         <b-card-img :src="img" alt="Image" class="rounded-0 " style="height: 100%;"></b-card-img>
@@ -26,7 +26,7 @@
 
 
 export default {
-    props: ['img' , 'Sbutton' , 'imgLeft','showDeleteBtn','bgcolor'] ,
+    props: ['img' , 'Sbutton' , 'imgLeft','showDeleteBtn','bgcolor','border'] ,
     data(){
         return{
             text : 'This is a wider card with supporting text as a natural lead-in to additional content,This is a wider card with supporting text as a natural lead-in to additional content',
@@ -60,11 +60,19 @@ export default {
     modifyText (e){
         this.$emit('modifyText',e) ;
     },
+    handleBorder(){
+      const borderWidth = this.border+"px"
+      this.$refs.bigDiv.style.borderWidth = borderWidth
+
+    }
     
     } ,
     watch  : {
       bgcolor : function(){
         this.handleBackgroudColor()
+      },
+      border : function(){
+        this.handleBorder()
       }
     }
   

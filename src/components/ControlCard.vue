@@ -10,6 +10,8 @@
         <p class="parameter-label">Button</p>
         <p class="parameter-label">Image</p>
         <p class="parameter-label">Border</p>
+        <p class="parameter-label">Round Corners</p>
+
         </div>
                 
         <div class="right">
@@ -33,11 +35,14 @@
 
 
         <div class="borderControl">
-        <input type="number"  min="0" max="30"  @change="handleBorder"/>
+        <input type="number"  min="0" max="100"  @change="handleBorder"/>
         <span>px</span>
         </div>
 
-
+       <div class="borderControl">
+        <input type="number"  min="0" max="100"  @change="handleCorner"/>
+        <span>px</span>
+        </div>
 
         </div>
        
@@ -74,9 +79,15 @@ export default {
         },
         handleBorder(e){
             if(e.target.value < 0) e.target.value = 0
-            else if(e.target.value > 30) e.target.value = 30
+            else if(e.target.value > 100) e.target.value = 100
             this.$emit('handleBorder',e)
+        },
+        handleCorner(e){
+            if(e.target.value < 0) e.target.value = 0
+            else if(e.target.value > 100) e.target.value = 100
+            this.$emit('handleCorner',e)
         }
+
     },
 
 }
@@ -118,7 +129,7 @@ input[type="number"]{
 }
 
 span{
-    margin-right: 10px;
+    margin-right: 4px;
     color: #60606b;
 }
 </style>

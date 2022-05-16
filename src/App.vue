@@ -216,7 +216,7 @@ export default {
     height: 100vh;
     background : #3e3e46;
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 970px) {
   .hide 
   {
     display: none;

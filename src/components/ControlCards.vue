@@ -66,7 +66,7 @@ export default {
     margin : 6px ;
 }
 button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled){
-    font-size : 10px;
+    font-size : 8px;
     border : none;
     outline : none;
     color : white;
@@ -96,7 +96,7 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
 
 
 .btn-group > .btn, .btn-group-vertical > .btn{
-    font-size : 10px;
+    font-size : 8px;
     border : none;
     outline : none;
     color : white;
@@ -104,7 +104,7 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
     border : 1px solid black;
 }
 .dropdown-item {
-  font-size : 10px;
+  font-size : 8px;
     border : none;
     outline : none;
     color : white;
@@ -115,5 +115,9 @@ input[type=color].form-control {
 }
 .form-control-color:not(:disabled):not([readonly]){
     box-shadow : none;
+}
+.btns{
+        justify-content : space-evenly;
+
 }
 </style>

@@ -10,7 +10,7 @@
     <b-dropdown-item @click="changeText('display-2')">header 2</b-dropdown-item>
     <b-dropdown-item @click="changeText('display-4')">header 4</b-dropdown-item>
     <b-dropdown-item @click="changeText('display-6')">header 6 </b-dropdown-item>
- </b-dropdown>
+      </b-dropdown>
 
       <b-icon ref="icon" class="icon me-2" variant="light" icon="type-bold" aria-hidden="true"  @click="changeWeight('fw-bold')" ></b-icon>
   <b-icon ref="icon" class="icon me-2" variant="light" icon="type-italic" aria-hidden="true"  @click="changeWeight('fst-italic')" ></b-icon>
@@ -20,6 +20,14 @@
  
       </div>
 
+      <b-dropdown id="dropdown-1" text="font size" class="m-md-2">
+    <b-dropdown-item @click="changeFontSize('initial')">default</b-dropdown-item>
+    <b-dropdown-item @click="changeFontSize('8px')">&nbsp;8</b-dropdown-item>
+    <b-dropdown-item @click="changeFontSize('10px')">10 </b-dropdown-item>
+    <b-dropdown-item @click="changeFontSize('12px')">12</b-dropdown-item>
+    <b-dropdown-item @click="changeFontSize('14px')">14</b-dropdown-item>
+    <b-dropdown-item @click="changeFontSize('16px')">16 </b-dropdown-item>
+      </b-dropdown>
 
  
 </div>
@@ -36,6 +44,9 @@ export default {
         },
         changetextColor(a){
           this.$emit('changetextColor',a.target.value);
+        },
+        changeFontSize(a){
+          this.$emit('changeFontSize',a);
         }
     }
 }

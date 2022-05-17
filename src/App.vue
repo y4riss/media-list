@@ -12,7 +12,7 @@
         <b-col cols="3"  class="hide" >
           <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
           <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder" @handleCorner="handleCorner"></ControlCard>
-          <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor"></ControlText>
+          <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor" @changeFontSize="changeFontSize"></ControlText>
         </b-col>
       </b-row>
       </div>
@@ -199,6 +199,9 @@ export default {
           }
 
         })
+      },
+      changeFontSize(fs){
+        this.selectedText.style.fontSize = fs ;
       }
     },
     mounted(){

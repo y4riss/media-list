@@ -10,7 +10,7 @@
             </div>
         </b-col>
         <b-col cols="3"  class="hide" >
-          <ControlCards @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
+          <ControlCards @uploadImgBackground="uploadImgBackground" @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
           <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder" @handleCorner="handleCorner"></ControlCard>
           <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor" @changeFontSize="changeFontSize"></ControlText>
         </b-col>
@@ -184,7 +184,11 @@ export default {
            }
         })
         }
-
+      },
+      uploadImgBackground(e){
+        const image = e.target.files[0] ;
+        console.log(window.URL.createObjectURL(image))
+        document.body.style.backgroundImage = 'url(' + window.URL.createObjectURL(image) + ')' ;
       },
       handleBorder(e){
         this.cardData.map(card => {

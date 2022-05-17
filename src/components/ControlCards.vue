@@ -12,7 +12,15 @@
 
                 <div class="right ">
             <b-button @click="addCard" class="btn" > Add card</b-button>
-            <input type="color" class="form-control form-control-color border-0" id="exampleColorInput" value="#FFFFFF" @change="changeBackground" style="background: #3e3e46" title="Choose your color">
+            <div class="d-flex">
+                <input type="color" class="form-control form-control-color border-0" id="exampleColorInput" value="#FFFFFF" @change="changeBackground" style="background: #3e3e46" title="Choose your color">
+                <div class="image-upload">
+                    <label for="BackGroundFile">
+                        <b-icon icon="camera"  variant="light" aria-hidden="true" style="cursor: pointer;"></b-icon>
+                    </label>
+                    <input class="form-control" type="file" accept="image/*" id="BackGroundFile" @change="uploadImg">
+                </div>
+            </div>
             <div class="btns d-flex">
             <b-button class="btn  " @click="changeCardWidth('small',$event)" @mouseenter="changeCardWidth('small',$event)" @mouseleave="handleMouseLeave">small</b-button>
             <b-button class="btn " @click="changeCardWidth('medium',$event)"  @mouseenter="changeCardWidth('medium',$event)" @mouseleave="handleMouseLeave">medium</b-button>
@@ -44,7 +52,10 @@ export default {
         },
         handleMouseLeave(e){
             this.$emit('handleMouseLeave',e)
-        }
+        },
+        uploadImg(e){
+             this.$emit('uploadImgBackground',e)
+        },
     }
 }
 </script>
@@ -120,4 +131,8 @@ input[type=color].form-control {
         justify-content : space-evenly;
 
 }
+.image-upload>input {
+  display: none;
+}
+
 </style>

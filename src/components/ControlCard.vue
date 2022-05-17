@@ -31,7 +31,7 @@
         <b-icon ref="icon" @click="handleCardButton('del')" icon="archive-fill" aria-hidden="true"  style="color: #595964;cursor : pointer"></b-icon>
         <b-icon ref="icon"  @click="handleCardButton('add')" icon="plus-lg" aria-hidden="true"  style="color: #595964;cursor : pointer"></b-icon>
 </div>
-        <input class="form-control form-control-sm" style="width:100%" type="file" id="formFile" accept="image/*" @change="uploadImg">
+        <input class="form-control form-control-sm" style="width:100%" type="file" id="formFile" accept="image/*" @input="uploadImg">
 
 
         <div class="borderControl">

@@ -180,6 +180,7 @@ export default {
         this.cardData.map(card =>{
           if(card.id === this.focusOn){
            card.img = window.URL.createObjectURL(image)
+           e.target.value= '' ;
            return
            }
         })

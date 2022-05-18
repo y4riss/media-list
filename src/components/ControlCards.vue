@@ -72,6 +72,7 @@ export default {
     display: flex;
     flex-direction: column;
     margin : 6px;
+    align-items: baseline;
 }
 .right *{
     margin : 6px ;

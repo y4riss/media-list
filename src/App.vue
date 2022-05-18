@@ -11,7 +11,7 @@
         </b-col>
         <b-col cols="3"  class="hide" >
           <ControlCards @uploadImgBackground="uploadImgBackground" @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
-          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder" @handleCorner="handleCorner"></ControlCard>
+          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder" @handleBorderStyle="handleBorderStyle"></ControlCard>
           <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor" @changeFontSize="changeFontSize"></ControlText>
         </b-col>
       </b-row>
@@ -40,7 +40,12 @@ export default {
       showControlText: null ,
       selectedText: null ,
       cardData: [{
-      border : 0,
+      border : {
+          width : 0,
+          radius : 0,
+          color : "#bfbfbf",
+          style : "solid"
+      },
       corner : 0,
       isSet : true,
       img:require('./assets/img1.png') ,
@@ -50,7 +55,12 @@ export default {
       imageOrder: 0,
       color : 'white',} ,
       {
-      border : 0,
+      border : {
+          width : 0,
+          radius : 0,
+          color : "#bfbfbf",
+          style : "solid"
+      },
       corner : 0,
       img:require('./assets/img1.png') ,
       isSet : true,
@@ -67,7 +77,12 @@ export default {
   methods: {
     addCard() {
       const newCard = {
-        border : 0,
+         border : {
+          width : 0,
+          radius : 0,
+          color : "#bfbfbf",
+          style : "solid"
+      },
         corner : 0,
         id: this.idCount ,
         img: require('./assets/img1.png') ,
@@ -157,7 +172,7 @@ export default {
         this.selectedText = e.target ;
       },
       changeText(cls){
-       // this.selectedText.style = ''
+       this.selectedText.style.fontSize = ''
         this.selectedText.className = '';
         if ( cls !== 'n')
           this.selectedText.classList.add(cls);
@@ -193,21 +208,23 @@ export default {
         console.log(window.URL.createObjectURL(image))
         document.body.style.backgroundImage = 'url(' + window.URL.createObjectURL(image) + ')' ;
       },
-      handleBorder(e){
-
+      handleBorder(c,type){
         this.cardData.map(card => {
           if(card.id === this.focusOn){
-                      card.border = e.target.value
+                      if(type == 'width')
+                      card.border.width = c
+                      else if(type == 'color')
+                      card.border.color = c
+                      else
+                      card.border.radius = c
+  
           }
         })
 
       },
-      handleCorner(e){
-        this.cardData.map(card => {
-          if(card.id === this.focusOn){
-           card.corner = e.target.value
-          }
-
+      handleBorderStyle(style){
+        this.cardData.map(card =>{
+          if(card.id === this.focusOn) card.border.style = style
         })
       },
       changeFontSize(fs){

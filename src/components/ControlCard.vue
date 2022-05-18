@@ -28,22 +28,42 @@
     </b-dropdown>
 
         <div class="icns">
-        <b-icon ref="icon" @click="handleCardButton('del')" icon="archive-fill" aria-hidden="true"  style="color: #595964;cursor : pointer"></b-icon>
-        <b-icon ref="icon"  @click="handleCardButton('add')" icon="plus-lg" aria-hidden="true"  style="color: #595964;cursor : pointer"></b-icon>
+        <b-icon ref="icon" @click="handleCardButton('del')" icon="archive-fill" aria-hidden="true" variant="light" style="cursor : pointer"></b-icon>
+        <b-icon ref="icon"  @click="handleCardButton('add')" icon="plus-lg" aria-hidden="true"  variant="light" style="cursor : pointer"></b-icon>
 </div>
-        <input class="form-control form-control-sm" style="width:100%" type="file" id="formFile" accept="image/*" @input="uploadImg">
+<div class="d-flex">               
+               <div class="image-upload">
+                    <label for="BackGroundFile">
+                        <b-icon icon="camera"  variant="light" aria-hidden="true" style="cursor: pointer;"></b-icon>
+                    </label>
+                    <input class="form-control" type="file" accept="image/*" id="BackGroundFile" @input="uploadImg">
+                </div>
+</div>
 
-
+        <div class="d-flex">
         <div class="borderControl">
-        <input type="number"  min="0" max="100"  @change="handleBorder"/>
+        <input type="number"  min="0" max="100"  @change="handleBorder($event,'width')"/>
         <span>px</span>
         </div>
+<input type="color" class="form-control form-control-color border-0" id="exampleColorInput" value="#FFFFFF" @change="handleBorder($event,'color')" style="background: #3e3e46" title="Choose your color">
+<div>
+  <b-dropdown id="dropdown-1" text="style" class="m-md-2" >
+    <b-dropdown-item  @click="handleBorderStyle('solid')" >solid</b-dropdown-item>
+    <b-dropdown-item   @click="handleBorderStyle('dotted')" >dotted</b-dropdown-item>
+    <b-dropdown-item   @click="handleBorderStyle('dashed')">dashed</b-dropdown-item>
+
+  </b-dropdown>
+</div>
+
+</div>
 
 
   <div class="borderControl">
-        <input type="number"  min="0" max="100" @change="handleCorner"/>
+        <input type="number"  min="0" max="100" @change="handleBorder($event,'radius')"/>
         <span>px</span>
         </div>
+
+
 
         </div>
        
@@ -78,17 +98,12 @@ export default {
         uploadImg(e){
              this.$emit('uploadImg',e)
         },
-        handleBorder(e){
-            if(e.target.value < 0) e.target.value = 0
-            else if(e.target.value > 100) e.target.value = 100
-            this.$emit('handleBorder',e)
+        handleBorder(e,type){
+            this.$emit('handleBorder',e.target.value,type)
         },
-        handleCorner(e){
-            if(e.target.value < 0) e.target.value = 0
-            else if(e.target.value > 100) e.target.value = 100
-            this.$emit('handleCorner',e)
+        handleBorderStyle(style){
+             this.$emit('handleBorderStyle',style)
         }
-
     },
 
 }

@@ -26,7 +26,7 @@
 
 
 export default {
-    props: ['img' , 'Sbutton' , 'imgLeft','showDeleteBtn','bgcolor','border','corner'] ,
+    props: ['img','Sbutton' , 'imgLeft','showDeleteBtn','bgcolor','border','corner'] ,
     data(){
         return{
             text : 'This is a wider card with supporting text as a natural lead-in to additional content,This is a wider card with supporting text as a natural lead-in to additional content',
@@ -61,27 +61,29 @@ export default {
         this.$emit('modifyText',e) ;
     },
     handleBorder(){
-      const borderWidth = this.border+"px"
-      this.$refs.bigDiv.style.borderWidth = borderWidth
-
+      const b= this.border.width+"px "+this.border.style+" "+this.border.color
+      this.$refs.bigDiv.style.border = b
+      this.$refs.bigDiv.style.borderRadius = this.border.radius+"px"
     },
-    handleCorner(){
-      const cornerWidth = this.corner+"px"
-      this.$refs.bigDiv.style.borderRadius = cornerWidth
 
-    }
     
     } ,
     watch  : {
       bgcolor : function(){
         this.handleBackgroudColor()
       },
-      border : function(){
+      'border.width' : function(){
         this.handleBorder()
       },
-      corner : function(){
-          this.handleCorner()
-      }
+      'border.radius' : function(){
+        this.handleBorder()
+      },
+        'border.color' : function(){
+        this.handleBorder()
+      },
+      'border.style' : function(){
+        this.handleBorder()
+      },
     }
 
     }

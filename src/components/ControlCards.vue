@@ -1,37 +1,41 @@
 <template>
 <div >
 
-        <h4 class="parameter ">Media List</h4>
+        <h4 class="parameter mx-0 ps-3">Media List</h4>
 
-        <div class="parameters">
-            <div class="left">
-            <p class="parameter-label">Media</p>
-            <p class="parameter-label">Background</p>
-            <p class="parameter-label">Content Width</p>
+        <div class="container-fluid h-100 p-0">
+            
+            <div class="row g-0 p-0 ">
+                <p class="parameter-label col ps-3 ">Media</p>
+                <b-button @click="addCard" class="btn col p-0" > Add card</b-button>
             </div>
 
-                <div class="right ">
-            <b-button @click="addCard" class="btn" > Add card</b-button>
-            <div class="d-flex">
-                <input type="color" class="form-control form-control-color border-0" id="exampleColorInput" value="#FFFFFF" @change="changeBackground" style="background: #3e3e46" title="Choose your color">
-                <div class="image-upload">
-                    <label for="BackGroundFile">
-                        <b-icon icon="camera"  variant="light" aria-hidden="true" style="cursor: pointer;"></b-icon>
-                    </label>
-                    <input class="form-control" type="file" accept="image/*" id="BackGroundFile" @change="uploadImg">
+            <div class="row g-0 p-0">
+                <p class="parameter-label col ps-3">Background</p>
+                <div class="d-flex  col">
+                    <input type="color" class="form-control form-control-color border-0" id="exampleColorInput" value="#FFFFFF" @change="changeBackground" style="background: #3e3e46" title="Choose your color">
+                    <div class="image-upload">
+                        <label for="BackGroundFile">
+                            <b-icon icon="camera"  variant="light" aria-hidden="true" style="cursor: pointer;"></b-icon>
+                        </label>
+                        <input class="form-control" type="file" accept="image/*" id="BackGroundFile" @change="uploadImg">
+                    </div>
                 </div>
             </div>
-            <div class="btns d-flex">
-            <b-button class="btn  " @click="changeCardWidth('small',$event)" @mouseenter="changeCardWidth('small',$event)" @mouseleave="handleMouseLeave">small</b-button>
-            <b-button class="btn " @click="changeCardWidth('medium',$event)"  @mouseenter="changeCardWidth('medium',$event)" @mouseleave="handleMouseLeave">medium</b-button>
-            <b-button class="btn "  @click="changeCardWidth('big',$event)"  @mouseenter="changeCardWidth('big',$event)" @mouseleave="handleMouseLeave">big</b-button>
-            </div>
+            
+            <div class="row g-0 p-0">
+                <p class="parameter-label col ps-3">Content Width</p>
+                <div class="btns d-flex col">
+                    <b-button class="btn  " @click="changeCardWidth('small',$event)" @mouseenter="changeCardWidth('small',$event)" @mouseleave="handleMouseLeave">small</b-button>
+                    <b-button class="btn " @click="changeCardWidth('medium',$event)"  @mouseenter="changeCardWidth('medium',$event)" @mouseleave="handleMouseLeave">medium</b-button>
+                    <b-button class="btn "  @click="changeCardWidth('big',$event)"  @mouseenter="changeCardWidth('big',$event)" @mouseleave="handleMouseLeave">big</b-button>
                 </div>
-         
+            </div>
+
+            
+
+
 </div>
-
-
-
 </div>
   
 </template>
@@ -65,15 +69,7 @@ export default {
     display: flex;
     align-items: baseline;
 }
-.left *{
-    padding-bottom: 10px;
-}
-.right{
-    display: flex;
-    flex-direction: column;
-    margin : 6px;
-    align-items: baseline;
-}
+
 .right *{
     margin : 6px ;
 }

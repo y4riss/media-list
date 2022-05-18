@@ -8,6 +8,7 @@
                       <b-icon ref="icon" style="cursor:pointer;" v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false" ></b-icon>
               </Card>
             </div>
+            
         </b-col>
         <b-col cols="3"  class="hide" >
           <ControlCards @uploadImgBackground="uploadImgBackground" @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>

@@ -3,7 +3,7 @@
 <div @click="handleDeleteBtn"  >
      <slot></slot>
      <div :class="{outsideBorder:showDeleteBtn}" >
-  <b-card no-body class="overflow-hidden" style="max-width: 100%" :class="[colorClass.text, colorClass.background ]" ref="bigDiv" >
+  <b-card no-body class="overflow-hidden" style="max-width: 100%" :class="[colorClass.text, colorClass.background ]" ref="bigDiv" data-mdb-toggle="animation" data-mdb-animation-reset="true" data-mdb-animation="slide-out-right">
     <b-row no-gutters >
       <b-col  :order="imgLeft" sm="12" md="4" >
         <b-card-img :src="img" alt="Image" class="rounded-0 " style="height: 100%;"></b-card-img>

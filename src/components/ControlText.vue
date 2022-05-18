@@ -21,7 +21,7 @@
       </div>
 
       <b-dropdown id="dropdown-1" text="font size" class="m-md-2">
-    <b-dropdown-item @click="changeFontSize('initial')">default</b-dropdown-item>
+    <b-dropdown-item @click="changeFontSize('inherit')">default</b-dropdown-item>
     <b-dropdown-item @click="changeFontSize('8px')">&nbsp;8</b-dropdown-item>
     <b-dropdown-item @click="changeFontSize('10px')">10 </b-dropdown-item>
     <b-dropdown-item @click="changeFontSize('12px')">12</b-dropdown-item>

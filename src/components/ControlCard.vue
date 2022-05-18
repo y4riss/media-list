@@ -39,8 +39,9 @@
         <span>px</span>
         </div>
 
-       <div class="borderControl">
-        <input type="number"  min="0" max="100"  @change="handleCorner"/>
+
+  <div class="borderControl">
+        <input type="number"  min="0" max="100" @change="handleCorner"/>
         <span>px</span>
         </div>
 

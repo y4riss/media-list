@@ -157,9 +157,11 @@ export default {
         this.selectedText = e.target ;
       },
       changeText(cls){
+       // this.selectedText.style = ''
         this.selectedText.className = '';
         if ( cls !== 'n')
           this.selectedText.classList.add(cls);
+          
       },
       changeWeight(cls){
         this.selectedText.classList.toggle(cls)
@@ -192,10 +194,13 @@ export default {
         document.body.style.backgroundImage = 'url(' + window.URL.createObjectURL(image) + ')' ;
       },
       handleBorder(e){
+
         this.cardData.map(card => {
-          if(card.id === this.focusOn)
-          card.border = e.target.value
+          if(card.id === this.focusOn){
+                      card.border = e.target.value
+          }
         })
+
       },
       handleCorner(e){
         this.cardData.map(card => {

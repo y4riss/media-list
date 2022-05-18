@@ -4,31 +4,31 @@
     <div class="container h-100 p-0">
 
         <div class="row g-0 p-0 ">
-            <p class="parameter-label col ps-3 ">Layout</p>
-                <div class="btns d-flex col">
+            <p class="parameter-label col-6 ps-3 ">Layout</p>
+                <div class="btns d-flex col-6">
                     <button class="mybtn" @click="changeCardOrder('left')">image left</button>
                     <button class="mybtn" @click="changeCardOrder('right')">image right</button>
                 </div>
         </div>
         <div class="row g-0 p-0 ">
-            <p class="parameter-label col ps-3 ">Background</p>
-                <b-dropdown id="dropdown-1" text="Change Background" class="my-2 col" >
+            <p class="parameter-label col-6 ps-3 ">Background</p>
+                <b-dropdown id="dropdown-1" text="Change Background" class="my-2 col-6" >
                     <b-dropdown-item @click="changeCardBackground('white')">White</b-dropdown-item>
                     <b-dropdown-item @click="changeCardBackground('light gray')">Light Gray</b-dropdown-item>
                     <b-dropdown-item @click="changeCardBackground('dark gray')">Dark Gray</b-dropdown-item>
                 </b-dropdown>
         </div>
         <div class="row g-0 p-0 ">
-            <p class="parameter-label col ps-3 ">Button</p>
-            <div class="icns col">
+            <p class="parameter-label col-6 ps-3 ">Button</p>
+            <div class="icns col-6">
                 <b-icon ref="icon" @click="handleCardButton('del')" icon="archive-fill" aria-hidden="true" variant="light" style="cursor : pointer"></b-icon>
                 <b-icon ref="icon"  @click="handleCardButton('add')" icon="plus-lg" aria-hidden="true"  variant="light" style="cursor : pointer"></b-icon>
                 <div></div>
             </div>
         </div>
         <div class="row g-0 p-0 ">
-            <p class="parameter-label col ps-3 ">Image</p>
-            <div class="d-flex col">               
+            <p class="parameter-label col-6 ps-3 ">Image</p>
+            <div class="d-flex col-6">               
                <div class="image-upload">
                     <label for="BackGroundFile">
                         <b-icon icon="camera"  variant="light" aria-hidden="true" style="cursor: pointer;"></b-icon>
@@ -38,8 +38,8 @@
             </div>
         </div>
         <div class="row g-0 p-0 ">
-            <p class="parameter-label col ps-3 ">Border</p>
-            <div class="d-flex col justify-content-between">
+            <p class="parameter-label col-6 ps-3 ">Border</p>
+            <div class="d-flex col-6 justify-content-between">
                 <div class="borderControl mx-0">
                     <input type="number"  min="0" max="100"  @change="handleBorder($event,'width')"/>
                     <span>px</span>
@@ -56,8 +56,8 @@
         </div>
 
         <div class="row g-0 p-0 ">
-            <p class="parameter-label col ps-3 ">Round Corners</p>
-                <div class="borderControl col">
+            <p class="parameter-label col-6 ps-3 ">Round Corners</p>
+                <div class="borderControl col-6">
                     <input type="number"  min="0" max="100" @change="handleBorder($event,'radius')"/>
                     <span>px</span>
                 </div>
@@ -107,7 +107,6 @@ input::-webkit-inner-spin-button {
 .icns{
     display: flex;
     justify-content: space-between;
-    margin : 6px;
 }
 input[type="number"]{
     box-sizing: content-box;
@@ -126,7 +125,7 @@ input[type="number"]{
     border: 1px solid #000000;
     border-radius: 2px;
     background-color: #2b2b33;
-    width: 40px;
+    max-width: 40px;
     height : 25px;
     display : flex;
     align-items: center;

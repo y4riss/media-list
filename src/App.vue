@@ -4,15 +4,15 @@
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center" id="main">
             <div ref="widthSelector" >
               <Card v-for="data in filteredCards" @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" :showDeleteBtn="data.showDeleteBtn" :border="data.border" :corner="data.corner"  class="my-3 justify-content-center"
-              :bgcolor="data.color" @modifyText="handleText" :buttonSize="data.buttonSize">
+              :bgcolor="data.color" @modifyText="handleText" :buttonSize="data.buttonSize" :buttonColor="data.buttonColor">
                       <b-icon ref="icon" style="cursor:pointer;" v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false" ></b-icon>
               </Card>
             </div>
         </b-col>
-        <b-col cols="3"  class="hide" >
+        <b-col cols="3"  class="hide p-0" >
           <ControlCards @uploadImgBackground="uploadImgBackground" @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
           <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder" @handleBorderStyle="handleBorderStyle" :cardData="cardData" :focusOn="focusOn"></ControlCard>
-          <ControlButton v-if="focusOn != null" @changeButtonSize="changeButtonSize"></ControlButton>
+          <ControlButton v-if="focusOn != null" @changeButtonSize="changeButtonSize"  @changeButtonColor="changeButtonColor"/>
           <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor" @changeFontSize="changeFontSize"></ControlText>
         </b-col>
       </b-row>
@@ -55,6 +55,7 @@ export default {
       showButton: true  ,
       showDeleteBtn : false,
       buttonSize : '',
+      buttonColor : 'btn-primary',
       id: 0 ,
       imageOrder: 0,
       color : 'white',} ,
@@ -71,6 +72,7 @@ export default {
       showButton: false  ,
       showDeleteBtn : false,
       buttonSize : '',
+      buttonColor : 'btn-primary',
       imageOrder: 0,
       id: 1 ,
       color : 'white',
@@ -95,6 +97,7 @@ export default {
         isSet : true,
         showDeleteBtn : false,
         buttonSize : '',
+        buttonColor : 'btn-primary',
         imageOrder: 0,
         color : 'white',
       }
@@ -240,6 +243,11 @@ export default {
         this.cardData.map(card =>{
           if(card.id === this.focusOn) card.buttonSize = size ;
         }) 
+      },
+      changeButtonColor(clr){
+        this.cardData.map(card =>{
+          if(card.id === this.focusOn) card.buttonColor = clr ;
+        })        
       }
     },
     mounted(){

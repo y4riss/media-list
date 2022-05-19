@@ -13,7 +13,7 @@
         <p contenteditable="true" @dblclick="modifyText">{{title}}</p>
        </b-card-title>
         <p contenteditable="true" @dblclick="modifyText" style="max-width: 100%;">{{text}}</p>
-       <a href="#" contenteditable="true" class="btn btn-primary active" :class="[buttonSize]" role="button" aria-pressed="true">Primary link</a>
+       <a href="#" v-if="Sbutton" contenteditable="true" class="btn active" :class="[buttonSize,buttonColor]" role="button" aria-pressed="true">Primary link</a>
 
       </b-col>
     </b-row>
@@ -27,7 +27,7 @@
 
 
 export default {
-    props: ['img','Sbutton' , 'imgLeft','showDeleteBtn','bgcolor','border','corner','buttonSize'] ,
+    props: ['img','Sbutton' , 'imgLeft','showDeleteBtn','bgcolor','border','corner','buttonSize','buttonColor'] ,
     data(){
         return{
             text : 'This is a wider card with supporting text as a natural lead-in to additional content,This is a wider card with supporting text as a natural lead-in to additional content',

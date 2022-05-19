@@ -1,7 +1,7 @@
 <template>
 
 <div>
-    <h4 class="parameter ">Inline Text</h4>
+    <h4 class="parameter mx-0 ps-3">Inline Text</h4>
 
       <div class="inline-text">
         <b-dropdown id="dropdown-1" text="Choose size" class="m-md-2">

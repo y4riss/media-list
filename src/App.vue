@@ -11,7 +11,7 @@
         </b-col>
         <b-col cols="3"  class="hide" >
           <ControlCards @uploadImgBackground="uploadImgBackground" @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
-          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder" @handleBorderStyle="handleBorderStyle"></ControlCard>
+          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder" @handleBorderStyle="handleBorderStyle" :cardData="cardData" :focusOn="focusOn"></ControlCard>
           <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor" @changeFontSize="changeFontSize"></ControlText>
 
         </b-col>
@@ -44,7 +44,7 @@ export default {
       border : {
           width : 0,
           radius : 0,
-          color : "black",
+          color : "#000000",
           style : "solid"
       },
       corner : 0,
@@ -59,7 +59,7 @@ export default {
       border : {
           width : 0,
           radius : 0,
-          color : "black",
+          color : "#000000",
           style : "solid"
       },
       corner : 0,
@@ -81,7 +81,7 @@ export default {
          border : {
           width : 0,
           radius : 0,
-          color : "black",
+          color : "#000000",
           style : "solid"
       },
         corner : 0,

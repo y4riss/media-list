@@ -78,7 +78,7 @@ export default {
         return{
             width : 0,
             radius : 0,
-            color : "black"
+            color : "#000000"
         }
     },
     methods:{

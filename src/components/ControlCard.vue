@@ -29,7 +29,7 @@
         <div class="row g-0 p-0 d-flex align-items-baseline ">
             <p class="parameter-label col-6 ps-3 ">Image</p>
             <div class="d-flex col-6">               
-               <div class="image-upload">
+               <div class="image-upload ">
                     <label for="cardFile">
                         <b-icon icon="camera"  variant="light" aria-hidden="true" style="cursor: pointer;"></b-icon>
                     </label>

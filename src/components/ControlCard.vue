@@ -50,6 +50,9 @@
                     <b-dropdown-item  @click="handleBorderStyle('solid')" >solid</b-dropdown-item>
                     <b-dropdown-item   @click="handleBorderStyle('dotted')" >dotted</b-dropdown-item>
                     <b-dropdown-item   @click="handleBorderStyle('dashed')">dashed</b-dropdown-item>
+                    <b-dropdown-item   @click="handleBorderStyle('groove')">groove</b-dropdown-item>
+                    <b-dropdown-item   @click="handleBorderStyle('ridge')">ridge</b-dropdown-item>
+                    <b-dropdown-item   @click="handleBorderStyle('inset')">inset</b-dropdown-item>
                 </b-dropdown>
                 </div>
             </div>

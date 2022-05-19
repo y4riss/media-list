@@ -41,10 +41,10 @@
             <p class="parameter-label col-6 ps-3 ">Border</p>
             <div class="d-flex col-6 justify-content-between">
                 <div class="borderControl mx-0">
-                    <input type="number"  min="0" max="100"  @change="handleBorder($event,'width')"/>
+                    <input type="number"  min="0" max="100" v-model="width"  @change="handleBorder($event,'width')"/>
                     <span>px</span>
                 </div>
-                <input type="color" class="form-control form-control-color border-0 m-0" id="exampleColorInput" value="#FFFFFF" @change="handleBorder($event,'color')" style="background: #3e3e46" title="Choose your color">
+                <input type="color" class="form-control form-control-color border-0 m-0" id="exampleColorInput" :value="color" @change="handleBorder($event,'color')" style="background: #3e3e46" title="Choose your color">
                 <div>
                 <b-dropdown id="dropdown-1" text="style" class="mt-1" >
                     <b-dropdown-item  @click="handleBorderStyle('solid')" >solid</b-dropdown-item>
@@ -58,7 +58,7 @@
         <div class="row g-0 p-0 ">
             <p class="parameter-label col-6 ps-3 ">Round Corners</p>
                 <div class="borderControl col-6">
-                    <input type="number"  min="0" max="100" @change="handleBorder($event,'radius')"/>
+                    <input type="number"  min="0" max="100" v-model="radius" @change="handleBorder($event,'radius')"/>
                     <span>px</span>
                 </div>
         </div>
@@ -68,10 +68,12 @@
 
 <script>
 export default {
+    props : ['cardData','focusOn'],
     data(){
         return{
-            number : 0,
-            width : 0
+            width : 0,
+            radius : 0,
+            color : "black"
         }
     },
     methods:{
@@ -94,6 +96,16 @@ export default {
              this.$emit('handleBorderStyle',style)
         }
     },
+    watch : {
+        focusOn : function()
+        {
+
+                this.width = this.cardData[this.focusOn].border.width
+                this.radius = this.cardData[this.focusOn].border.radius
+                this.color = this.cardData[this.focusOn].border.color
+                
+        }
+    }
 
 }
 </script>

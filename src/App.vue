@@ -4,7 +4,7 @@
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center" id="main">
             <div ref="widthSelector" >
               <Card v-for="data in filteredCards" @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" :showDeleteBtn="data.showDeleteBtn" :border="data.border" :corner="data.corner"  class="my-3 justify-content-center"
-              :bgcolor="data.color" @modifyText="handleText">
+              :bgcolor="data.color" @modifyText="handleText" :buttonSize="data.buttonSize">
                       <b-icon ref="icon" style="cursor:pointer;" v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false" ></b-icon>
               </Card>
             </div>
@@ -12,8 +12,8 @@
         <b-col cols="3"  class="hide" >
           <ControlCards @uploadImgBackground="uploadImgBackground" @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
           <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder" @handleBorderStyle="handleBorderStyle" :cardData="cardData" :focusOn="focusOn"></ControlCard>
+          <ControlButton v-if="focusOn != null" @changeButtonSize="changeButtonSize"></ControlButton>
           <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor" @changeFontSize="changeFontSize"></ControlText>
-
         </b-col>
       </b-row>
       </div>
@@ -25,13 +25,15 @@ import Card from "./components/Card.vue";
 import ControlCards from "./components/ControlCards.vue";
 import ControlCard from "./components/ControlCard.vue";
 import ControlText from "./components/ControlText.vue";
+import ControlButton from "./components/ControlButton.vue";
 
 export default {
   components:{
     Card,
     ControlCards,
     ControlCard,
-    ControlText
+    ControlText,
+    ControlButton
 },
   data(){
     return{
@@ -52,6 +54,7 @@ export default {
       img:require('./assets/img1.png') ,
       showButton: true  ,
       showDeleteBtn : false,
+      buttonSize : '',
       id: 0 ,
       imageOrder: 0,
       color : 'white',} ,
@@ -67,6 +70,7 @@ export default {
       isSet : true,
       showButton: false  ,
       showDeleteBtn : false,
+      buttonSize : '',
       imageOrder: 0,
       id: 1 ,
       color : 'white',
@@ -83,13 +87,14 @@ export default {
           radius : 0,
           color : "#000000",
           style : "solid"
-      },
+        },
         corner : 0,
         id: this.idCount ,
         img: require('./assets/img1.png') ,
         showButton: false  ,
         isSet : true,
         showDeleteBtn : false,
+        buttonSize : '',
         imageOrder: 0,
         color : 'white',
       }
@@ -230,6 +235,11 @@ export default {
       },
       changeFontSize(fs){
         this.selectedText.style.fontSize = fs ;
+      },
+      changeButtonSize(size){
+        this.cardData.map(card =>{
+          if(card.id === this.focusOn) card.buttonSize = size ;
+        }) 
       }
     },
     mounted(){

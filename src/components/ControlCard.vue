@@ -30,10 +30,10 @@
             <p class="parameter-label col-6 ps-3 ">Image</p>
             <div class="d-flex col-6">               
                <div class="image-upload">
-                    <label for="BackGroundFile">
+                    <label for="cardFile">
                         <b-icon icon="camera"  variant="light" aria-hidden="true" style="cursor: pointer;"></b-icon>
                     </label>
-                    <input class="form-control" type="file" accept="image/*" id="BackGroundFile" @input="uploadImg">
+                    <input class="form-control" type="file" accept="image/*" id="cardFile" @input="uploadImg">
                 </div>
             </div>
         </div>
@@ -53,6 +53,8 @@
                     <b-dropdown-item   @click="handleBorderStyle('groove')">groove</b-dropdown-item>
                     <b-dropdown-item   @click="handleBorderStyle('ridge')">ridge</b-dropdown-item>
                     <b-dropdown-item   @click="handleBorderStyle('inset')">inset</b-dropdown-item>
+
+
                 </b-dropdown>
                 </div>
             </div>

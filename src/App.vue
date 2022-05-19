@@ -13,6 +13,7 @@
           <ControlCards @uploadImgBackground="uploadImgBackground" @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
           <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder" @handleBorderStyle="handleBorderStyle"></ControlCard>
           <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor" @changeFontSize="changeFontSize"></ControlText>
+
         </b-col>
       </b-row>
       </div>
@@ -204,9 +205,9 @@ export default {
         }
       },
       uploadImgBackground(e){
-        const image = e.target.files[0] ;
-        console.log(window.URL.createObjectURL(image))
+        const image = e.target.files[0] ;    
         document.body.style.backgroundImage = 'url(' + window.URL.createObjectURL(image) + ')' ;
+        e.target.value = '' ;
       },
       handleBorder(c,type){
         this.cardData.map(card => {

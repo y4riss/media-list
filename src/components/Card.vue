@@ -12,7 +12,7 @@
         <b-card-title>
         <p contenteditable="true" @dblclick="modifyText">{{title}}</p>
        </b-card-title>
-        <p contenteditable="true" @dblclick="modifyText">{{text}}</p>
+        <p contenteditable="true" @dblclick="modifyText" style="max-width: 100%;">{{text}}</p>
         <b-button v-if="Sbutton" href="#" variant="primary">Go somewhere</b-button>
       </b-col>
     </b-row>

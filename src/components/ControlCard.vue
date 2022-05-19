@@ -53,6 +53,7 @@
                     <b-dropdown-item   @click="handleBorderStyle('groove')">groove</b-dropdown-item>
                     <b-dropdown-item   @click="handleBorderStyle('ridge')">ridge</b-dropdown-item>
                     <b-dropdown-item   @click="handleBorderStyle('inset')">inset</b-dropdown-item>
+                    
                 </b-dropdown>
                 </div>
             </div>

@@ -6,11 +6,11 @@
         <div class="container-fluid h-100 p-0">
             
             <div class="row g-0 p-0 ">
-                <p class="parameter-label col-6 ps-3 ">Media</p>
+                <p class="parameter-label col-6 ps-3 " style="transform:translate(0,8px)">Media</p>
                 <b-button @click="addCard" class="btn col-6 p-0" > Add card</b-button>
             </div>
 
-            <div class="row g-0 p-0 ">
+            <div class="row g-0 p-0 d-flex align-items-baseline">
                 <p class="parameter-label col-6 ps-3">Background</p>
                 <div class="d-flex  justify-content-between col-6 align-items-center">
                     <div class="image-upload">
@@ -25,7 +25,7 @@
             </div>
             
             <div class="row g-0 p-0">
-                <p class="parameter-label col-6 ps-3">Content Width</p>
+                <p class="parameter-label col-6 ps-3" style="transform:translate(0,5px)">Content Width</p>
                 <div class="btns d-flex col-6">
                     <b-button class="btn  " @click="changeCardWidth('small',$event)" @mouseenter="changeCardWidth('small',$event)" @mouseleave="handleMouseLeave">small</b-button>
                     <b-button class="btn " @click="changeCardWidth('medium',$event)"  @mouseenter="changeCardWidth('medium',$event)" @mouseleave="handleMouseLeave">medium</b-button>

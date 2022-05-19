@@ -3,14 +3,14 @@
   <h4 class="parameter mx-0 ps-3">Media</h4>
     <div class="container h-100 p-0">
 
-        <div class="row g-0 p-0 ">
+        <div class="row g-0 p-0 d-flex align-items-baseline">
             <p class="parameter-label col-6 ps-3 ">Layout</p>
                 <div class="btns d-flex col-6">
                     <button class="mybtn" @click="changeCardOrder('left')">image left</button>
                     <button class="mybtn" @click="changeCardOrder('right')">image right</button>
                 </div>
         </div>
-        <div class="row g-0 p-0 ">
+        <div class="row g-0 p-0 d-flex align-items-baseline">
             <p class="parameter-label col-6 ps-3 ">Background</p>
                 <b-dropdown id="dropdown-1" text="Change Background" class="my-2 col-6" >
                     <b-dropdown-item @click="changeCardBackground('white')">White</b-dropdown-item>
@@ -18,7 +18,7 @@
                     <b-dropdown-item @click="changeCardBackground('dark gray')">Dark Gray</b-dropdown-item>
                 </b-dropdown>
         </div>
-        <div class="row g-0 p-0 ">
+        <div class="row g-0 p-0 d-flex align-items-baseline">
             <p class="parameter-label col-6 ps-3 ">Button</p>
             <div class="icns col-6">
                 <b-icon ref="icon" @click="handleCardButton('del')" icon="archive-fill" aria-hidden="true" variant="light" style="cursor : pointer"></b-icon>
@@ -26,7 +26,7 @@
                 <div></div>
             </div>
         </div>
-        <div class="row g-0 p-0 ">
+        <div class="row g-0 p-0 d-flex align-items-baseline">
             <p class="parameter-label col-6 ps-3 ">Image</p>
             <div class="d-flex col-6">               
                <div class="image-upload">
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="row g-0 p-0 ">
+        <div class="row g-0 p-0 d-flex align-items-baseline">
             <p class="parameter-label col-6 ps-3 ">Border</p>
             <div class="d-flex col-6 justify-content-between">
                 <div class="borderControl mx-0">
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <div class="row g-0 p-0 ">
+        <div class="row g-0 p-0 d-flex align-items-baseline">
             <p class="parameter-label col-6 ps-3 ">Round Corners</p>
                 <div class="borderControl col-6">
                     <input type="number"  min="0" max="100" v-model="radius" @change="handleBorder($event,'radius')"/>

@@ -67,7 +67,7 @@ export default {
     },
     handleShadow(){
       const s = this.shadow.offset.x+"px "+this.shadow.offset.y+"px "+this.shadow.blur+"px "+this.shadow.spread+"px "+this.shadow.color
-     this.$refs.bigDiv.style.boxShadow = s
+      this.$refs.bigDiv.style.boxShadow = s
     }
     
     } ,
@@ -88,7 +88,7 @@ export default {
         this.handleBorder()
       },
       'shadow.color' : function(){
-        this.handleBorder()
+        this.handleShadow()
       },
       'shadow.blur' : function(){
         this.handleShadow()

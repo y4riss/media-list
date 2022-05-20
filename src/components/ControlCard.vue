@@ -169,7 +169,8 @@ export default {
             }
         },
         handleShadow(e,option){
-            this.$emit('handleShadow',e.target.value,option)
+
+this.$emit('handleShadow',e.target.value,option)
         }
     },
     watch : {

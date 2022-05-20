@@ -19,7 +19,13 @@
                     <b-dropdown-item @click="changeButtonColor('Black','btn-dark')">Black</b-dropdown-item>
                     <b-dropdown-item @click="changeButtonColor('Light','btn-light')">Light</b-dropdown-item>
                     <b-dropdown-item @click="changeButtonColor('Warning','btn-warning')">Warning</b-dropdown-item>
+                    <b-dropdown-item @click="changeButtonColor('Gray','btn-secondary')">Gray</b-dropdown-item>
                 </b-dropdown>
+            </div>
+
+            <div class="row g-0 p-0  ">
+                <p class="parameter-label col-6 ps-3 " style="transform: translate(0,8px);">Outline button</p>
+                <b-button @click="toggleOutline" class="btn col-6 p-0" >{{ OutlineStatus }}</b-button>
             </div>
     </div>
 
@@ -30,7 +36,8 @@ export default {
     data(){
         return{
             buttonSize: "small" ,
-            buttonColor: "Blue"
+            buttonColor: "Blue" ,
+            OutlineStatus: "Enable"
         }
     },
     methods:{
@@ -44,8 +51,21 @@ export default {
                 this.$emit('changeButtonSize','');
         },
         changeButtonColor(clr,btsClr){
+            this.OutlineStatus ='Enable'
             this.buttonColor = clr ;
             this.$emit('changeButtonColor',btsClr) ;
+        },
+        toggleOutline(){
+            console.log(this.OutlineStatus)
+            if (this.OutlineStatus =='Enable')
+            {
+                this.OutlineStatus ='Disable'
+                this.$emit('toggleOutline','enable') ;
+            }
+            else {
+                this.OutlineStatus ='Enable'
+                this.$emit('toggleOutline','disable') ;
+            }
         }
     }
 }

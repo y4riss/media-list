@@ -13,7 +13,7 @@
         <p contenteditable="true" @dblclick="modifyText">{{title}}</p>
        </b-card-title>
         <p contenteditable="true" @dblclick="modifyText" style="max-width: 100%;">{{text}}</p>
-       <a href="#" v-if="Sbutton" contenteditable="true" class="btn active" :class="[buttonSize,buttonColor]" role="button" aria-pressed="true">Primary link</a>
+       <a href="#" v-if="Sbutton" contenteditable="true" class="btn" :class="[buttonSize,buttonColor]" role="button" aria-pressed="true">Primary link</a>
 
       </b-col>
     </b-row>

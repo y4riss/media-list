@@ -12,7 +12,7 @@
         <b-col cols="3"  class="hide p-0" >
           <ControlCards @uploadImgBackground="uploadImgBackground" @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
           <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder" @handleBorderStyle="handleBorderStyle" :cardData="cardData" :focusOn="focusOn"></ControlCard>
-          <ControlButton v-if="focusOn != null" @changeButtonSize="changeButtonSize"  @changeButtonColor="changeButtonColor"/>
+          <ControlButton v-if="focusOn != null" @changeButtonSize="changeButtonSize"  @changeButtonColor="changeButtonColor" @toggleOutline="toggleOutline" />
           <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor" @changeFontSize="changeFontSize"></ControlText>
         </b-col>
       </b-row>
@@ -248,6 +248,21 @@ export default {
         this.cardData.map(card =>{
           if(card.id === this.focusOn) card.buttonColor = clr ;
         })        
+      },
+      toggleOutline(status){
+        this.cardData.map(card =>{
+          if(card.id === this.focusOn){
+            if (status === 'enable'){
+              const  newColor = 'btn-outline' + card.buttonColor.substring(3, card.buttonColor.length) ;
+              console.log(newColor) 
+              card.buttonColor = newColor ;
+            }else {
+              const newColor =  'btn-' + card.buttonColor.substring(12, card.buttonColor.length) ;
+              console.log(newColor) 
+              card.buttonColor = newColor ;
+            }
+          }
+        })  
       }
     },
     mounted(){

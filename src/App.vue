@@ -9,7 +9,7 @@
               </Card>
             </div>
         </b-col>
-        <b-col cols="3"  class="hide p-0" style="overflow-y : scroll;" >
+        <b-col cols="3"  class="hide p-0" style="overflow-y : auto;" >
           <ControlCards @uploadImgBackground="uploadImgBackground" @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
           <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder" @handleBorderStyle="handleBorderStyle" :cardData="cardData" :focusOn="focusOn" @handleShadowBtn="handleShadowBtn" @handleShadow="handleShadow"></ControlCard>
           <ControlButton v-if="focusOn != null" @changeButtonSize="changeButtonSize"  @changeButtonColor="changeButtonColor" @toggleOutline="toggleOutline" />

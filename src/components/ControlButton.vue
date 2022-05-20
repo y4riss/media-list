@@ -23,7 +23,7 @@
                 </b-dropdown>
             </div>
 
-            <div class="row g-0 p-0  ">
+            <div class="row g-0 p-0  mb-4">
                 <p class="parameter-label col-6 ps-3 " style="transform: translate(0,8px);">Outline button</p>
                 <b-button @click="toggleOutline" class="btn col-6 p-0" >toggle Outline</b-button>
             </div>

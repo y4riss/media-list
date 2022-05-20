@@ -3,8 +3,8 @@
 <div>
     <h4 class="parameter mx-0 ps-3">Inline Text</h4>
 
-      <div class="inline-text">
-        <b-dropdown id="dropdown-1" text="Choose size" class="m-md-2">
+      <div class="inline-text ps-3">
+        <b-dropdown id="dropdown-1" text="Choose size" class="me-2">
     <b-dropdown-item @click="changeText('n')">normal</b-dropdown-item>
     <b-dropdown-item @click="changeText('display-1')" >header 1 </b-dropdown-item>
     <b-dropdown-item @click="changeText('display-2')">header 2</b-dropdown-item>
@@ -15,12 +15,12 @@
       <b-icon ref="icon" class="icon me-2" variant="light" icon="type-bold" aria-hidden="true"  @click="changeWeight('fw-bold')" ></b-icon>
   <b-icon ref="icon" class="icon me-2" variant="light" icon="type-italic" aria-hidden="true"  @click="changeWeight('fst-italic')" ></b-icon>
   <b-icon ref="icon" class="icon me-2" variant="light" icon="type-underline" aria-hidden="true" @click="changeWeight('text-decoration-underline')" ></b-icon>
-  <b-icon ref="icon" class="icon" variant="light" icon="type-strikethrough" aria-hidden="true" @click="changeWeight('text-decoration-line-through')" ></b-icon>
-  <input type="color" class="form-control form-control-color border-0" id="exampleColorInput" value="#2b2b33" @change="changetextColor" style="background: #3e3e46" title="Choose your color">
+  <b-icon ref="icon" class="icon me-2" variant="light" icon="type-strikethrough" aria-hidden="true" @click="changeWeight('text-decoration-line-through')" ></b-icon>
+  <input type="color" class="form-control form-control-color border-0 " id="exampleColorInput" value="#2b2b33" @change="changetextColor" style="background: #3e3e46" title="Choose your color">
  
       </div>
 
-      <b-dropdown id="dropdown-1" text="font size" class="m-md-2">
+      <b-dropdown id="dropdown-1" text="font size" class=" ps-3">
     <b-dropdown-item @click="changeFontSize('inherit')">default</b-dropdown-item>
     <b-dropdown-item @click="changeFontSize('8px')">&nbsp;8</b-dropdown-item>
     <b-dropdown-item @click="changeFontSize('10px')">10 </b-dropdown-item>

@@ -25,7 +25,7 @@
 
             <div class="row g-0 p-0  ">
                 <p class="parameter-label col-6 ps-3 " style="transform: translate(0,8px);">Outline button</p>
-                <b-button @click="toggleOutline" class="btn col-6 p-0" >{{ OutlineStatus }}</b-button>
+                <b-button @click="toggleOutline" class="btn col-6 p-0" >toggle Outline</b-button>
             </div>
     </div>
 
@@ -37,7 +37,6 @@ export default {
         return{
             buttonSize: "small" ,
             buttonColor: "Blue" ,
-            OutlineStatus: "Enable"
         }
     },
     methods:{
@@ -51,22 +50,13 @@ export default {
                 this.$emit('changeButtonSize','');
         },
         changeButtonColor(clr,btsClr){
-            this.OutlineStatus ='Enable'
             this.buttonColor = clr ;
             this.$emit('changeButtonColor',btsClr) ;
         },
         toggleOutline(){
-            console.log(this.OutlineStatus)
-            if (this.OutlineStatus =='Enable')
-            {
-                this.OutlineStatus ='Disable'
-                this.$emit('toggleOutline','enable') ;
-            }
-            else {
-                this.OutlineStatus ='Enable'
-                this.$emit('toggleOutline','disable') ;
-            }
+            this.$emit('toggleOutline') ;
         }
+        
     }
 }
 </script>

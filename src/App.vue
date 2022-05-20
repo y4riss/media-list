@@ -249,16 +249,14 @@ export default {
           if(card.id === this.focusOn) card.buttonColor = clr ;
         })        
       },
-      toggleOutline(status){
+      toggleOutline(){
         this.cardData.map(card =>{
           if(card.id === this.focusOn){
-            if (status === 'enable'){
+            if (!card.buttonColor.includes('outline')){
               const  newColor = 'btn-outline' + card.buttonColor.substring(3, card.buttonColor.length) ;
-              console.log(newColor) 
               card.buttonColor = newColor ;
             }else {
               const newColor =  'btn-' + card.buttonColor.substring(12, card.buttonColor.length) ;
-              console.log(newColor) 
               card.buttonColor = newColor ;
             }
           }

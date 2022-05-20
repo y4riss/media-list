@@ -104,11 +104,12 @@ export default {
     watch : {
         focusOn : function()
         {
-
-                this.width = this.cardData[this.focusOn].border.width
-                this.radius = this.cardData[this.focusOn].border.radius
-                this.color = this.cardData[this.focusOn].border.color
-                
+                 this.cardData.map(card =>{
+                    if(card.id === this.focusOn){
+                this.width = card.border.width
+                this.radius = card.border.radius
+                this.color = card.border.color
+                }})
         }
     }
 

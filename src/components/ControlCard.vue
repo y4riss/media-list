@@ -19,6 +19,7 @@
                 </b-dropdown>
         </div>
         <div class="row g-0 p-0 d-flex align-items-baseline ">
+            
             <p class="parameter-label col-6 ps-3 ">Button</p>
             <div class="icns col-6">
                 <b-icon ref="icon" @click="handleCardButton('del')" icon="archive-fill" aria-hidden="true" variant="light" style="cursor : pointer"></b-icon>
@@ -67,8 +68,57 @@
                     <span>px</span>
                 </div>
         </div>
-        </div>
-</div>
+
+                    <div class="row g-0 p-0 align-items-baseline shadow-div">
+                <p class="parameter-label col-6 ps-3" >Shadow</p>
+                <div class="d-flex col-6">
+                    <b-button class="btn" @click="handleShadowBtn">None</b-button>
+                     <b-button class="btn"  @click="handleShadowBtn"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="55.832px" height="55.832px" viewBox="0 0 55.832 55.832" style="enable-background:new 0 0 55.832 55.832;" xml:space="preserve"><g><g><g><path d="M9.166,41.832H6.669C2.991,41.832,0,38.84,0,35.163V11.835c0-3.678,2.992-6.669,6.669-6.669h34.328     c3.678,0,6.669,2.992,6.669,6.669v3.164c0,0.552-0.448,1-1,1H14.835c-2.575,0-4.669,2.095-4.669,4.669v20.164     C10.166,41.385,9.718,41.832,9.166,41.832z M6.669,7.166C4.094,7.166,2,9.261,2,11.835v23.328c0,2.575,2.095,4.669,4.669,4.669     h1.497V20.669c0-3.678,2.992-6.669,6.669-6.669h30.831v-2.164c0-2.575-2.096-4.669-4.669-4.669H6.669V7.166z"></path><path d="M49.163,50.666H14.835c-3.678,0-6.669-2.992-6.669-6.669V20.669c0-3.678,2.992-6.669,6.669-6.669h34.328     c3.678,0,6.669,2.992,6.669,6.669v23.328C55.832,47.674,52.84,50.666,49.163,50.666z M14.835,15.999     c-2.575,0-4.669,2.095-4.669,4.669v23.328c0,2.575,2.095,4.669,4.669,4.669h34.328c2.575,0,4.669-2.095,4.669-4.669V20.669     c0-2.575-2.096-4.669-4.669-4.669L14.835,15.999L14.835,15.999z"/></g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></b-button>
+               </div>       
+                </div>
+
+                <div class="shadow-options" v-if="active">
+
+                             <div class="row g-0 p-0 d-flex ">
+                                    <p class="parameter-label col-6 ps-3 " style="transform: translate(0, 10px);">&nbsp;&nbsp;⌙ Color</p>
+            <input @change="handleShadow($event,'color')" type="color" class="form-control form-control-color border-0 m-0" :value="shadowColor" style="background: #3e3e46" title="Choose your color">
+                                </div>
+
+                                <div class="row g-0 p-0 d-flex align-items-baseline ">
+                                    <p class="parameter-label col-6 ps-3 ">&nbsp;&nbsp;⌙ Offset (X, Y)</p>
+                                        <div class="borderControl col-6 me-1">
+                                            <input type="number" v-model="offsetX" min="0" max="100" @change="handleShadow($event,'x')"/>
+                                            <span>px</span>
+                                        </div> 
+                                        <div class="borderControl col-6">
+                                            <input type="number" v-model="offsetY" min="0" max="100" @change="handleShadow($event,'y')"/>
+                                            <span>px</span>
+                                        </div>
+                                </div>
+                                
+                                <div class="row g-0 p-0 d-flex align-items-baseline ">
+                                    <p class="parameter-label col-6 ps-3 ">&nbsp;&nbsp;⌙ Blur</p>
+                                        <div class="borderControl col-6">
+                                            <input type="number"  v-model="blur" min="0" max="100" @change="handleShadow($event,'blur')"/>
+                                            <span>px</span>
+                                        </div>
+                                </div>
+                            
+                                <div class="row g-0 p-0 d-flex align-items-baseline ">
+                                    <p class="parameter-label col-6 ps-3 ">&nbsp;&nbsp;⌙ Spread</p>
+                                        <div class="borderControl col-6">
+                                            <input type="number" v-model="spread"  min="0" max="100" @change="handleShadow($event,'spread')"/>
+                                            <span>px</span>
+                                        </div>
+                                </div>
+                        </div>
+               </div>
+           
+               
+           </div>
+
+
+
 </template>
 
 <script>
@@ -78,7 +128,13 @@ export default {
         return{
             width : 0,
             radius : 0,
-            color : "#000000"
+            color : "#000000",
+            active : false,
+            spread : 0,
+            blur : 16,
+            offsetX : 0,
+            offsetY : 8,
+            shadowColor : "#000000"
         }
     },
     methods:{
@@ -99,17 +155,41 @@ export default {
         },
         handleBorderStyle(style){
              this.$emit('handleBorderStyle',style)
+        },
+        handleShadowBtn(e){
+            if(e.target.textContent == 'None'){
+            this.active = false
+            this.$emit('handleShadowBtn',false)
+
+            }
+            else{
+                   this.active = true
+                   this.$emit('handleShadowBtn',true)
+
+            }
+        },
+        handleShadow(e,option){
+            this.$emit('handleShadow',e.target.value,option)
         }
     },
     watch : {
         focusOn : function()
         {
                  this.cardData.map(card =>{
-                    if(card.id === this.focusOn){
+                 if(card.id === this.focusOn){
+                this.active = card.shadow.active
+                this.spread = card.shadow.spread
+                this.blur = card.shadow.blur
+                
+                this.shadowColor = card.shadow.color
+                this.offsetX = card.shadow.offset.x
+                this.offsetY = card.shadow.offset.y
+
                 this.width = card.border.width
                 this.radius = card.border.radius
                 this.color = card.border.color
                 }})
+                
         }
     }
 
@@ -153,5 +233,10 @@ input[type="number"]{
 span{
     margin-right: 2px;
     color: #60606b;
+}
+.shadow-div svg{
+    fill:white;
+    width : 20px;
+    height : 20px;
 }
 </style>

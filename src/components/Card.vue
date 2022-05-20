@@ -27,7 +27,7 @@
 
 
 export default {
-    props: ['img','Sbutton' , 'imgLeft','showDeleteBtn','bgcolor','border','corner','buttonSize','buttonColor'] ,
+    props: ['img','Sbutton' , 'imgLeft','showDeleteBtn','bgcolor','border','corner','buttonSize','buttonColor','shadow'] ,
     data(){
         return{
             text : 'This is a wider card with supporting text as a natural lead-in to additional content,This is a wider card with supporting text as a natural lead-in to additional content',
@@ -43,7 +43,6 @@ export default {
         this.$emit('focus')
       },
       handleBackgroudColor(){
-        console.log(this.bgcolor,'ff')
         if (this.bgcolor === 'white'){
           this.colorClass.text = 'text-dark'
           this.colorClass.background = 'bg-white'
@@ -66,7 +65,10 @@ export default {
       this.$refs.bigDiv.style.border = b
       this.$refs.bigDiv.style.borderRadius = this.border.radius+"px"
     },
-
+    handleShadow(){
+      const s = this.shadow.offset.x+"px "+this.shadow.offset.y+"px "+this.shadow.blur+"px "+this.shadow.spread+"px "+this.shadow.color
+     this.$refs.bigDiv.style.boxShadow = s
+    }
     
     } ,
     watch  : {
@@ -84,6 +86,21 @@ export default {
       },
       'border.style' : function(){
         this.handleBorder()
+      },
+      'shadow.color' : function(){
+        this.handleBorder()
+      },
+      'shadow.blur' : function(){
+        this.handleShadow()
+      },
+      'shadow.spread' : function(){
+        this.handleShadow()
+      },
+    'shadow.offset.x' : function(){
+      this.handleShadow()
+    },
+      'shadow.offset.y' : function(){
+        this.handleShadow()
       },
     }
 

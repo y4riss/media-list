@@ -3,15 +3,15 @@
       <b-row>
         <b-col cols="9"  class="d-flex justify-content-center flex-column align-items-center" id="main">
             <div ref="widthSelector" >
-              <Card v-for="data in filteredCards" @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" :showDeleteBtn="data.showDeleteBtn" :border="data.border" :corner="data.corner"  class="my-3 justify-content-center"
+              <Card v-for="data in filteredCards" @focus="handleFocus(data.id)" :key="data.id"  :img="data.img" :Sbutton="data.showButton" :imgLeft="data.imageOrder" :showDeleteBtn="data.showDeleteBtn" :border="data.border" :corner="data.corner"  :shadow="data.shadow" class="my-3 justify-content-center"
               :bgcolor="data.color" @modifyText="handleText" :buttonSize="data.buttonSize" :buttonColor="data.buttonColor">
                       <b-icon ref="icon" style="cursor:pointer;" v-if="data.showDeleteBtn" icon="trash" aria-hidden="true" @click="data.isSet = false" ></b-icon>
               </Card>
             </div>
         </b-col>
-        <b-col cols="3"  class="hide p-0" >
+        <b-col cols="3"  class="hide p-0" style="overflow-y : scroll;" >
           <ControlCards @uploadImgBackground="uploadImgBackground" @addCard="addCard" @changeCardWidth="changeCardWidth" @changeBackground="changeBackground" @handleMouseLeave="handleMouseLeave"></ControlCards>
-          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder" @handleBorderStyle="handleBorderStyle" :cardData="cardData" :focusOn="focusOn"></ControlCard>
+          <ControlCard v-if="focusOn != null" @changeCardOrder="changeCardOrder" @changeCardBackground="changeCardBackground"  @handleCardButton="handleCardButton" @uploadImg="uploadImg" @handleBorder="handleBorder" @handleBorderStyle="handleBorderStyle" :cardData="cardData" :focusOn="focusOn" @handleShadowBtn="handleShadowBtn" @handleShadow="handleShadow"></ControlCard>
           <ControlButton v-if="focusOn != null" @changeButtonSize="changeButtonSize"  @changeButtonColor="changeButtonColor" @toggleOutline="toggleOutline" />
           <ControlText v-if="showControlText" @changeText="changeText" @changeWeight="changeWeight" @changetextColor="changetextColor" @changeFontSize="changeFontSize"></ControlText>
         </b-col>
@@ -43,6 +43,13 @@ export default {
       showControlText: null ,
       selectedText: null ,
       cardData: [{
+      shadow : {
+        active : false,
+        offset : {x : 0 , y : 8},
+        blur : 16,
+        spread : 0,
+        color : "#000000"
+      },
       border : {
           width : 0,
           radius : 0,
@@ -59,7 +66,14 @@ export default {
       id: 0 ,
       imageOrder: 0,
       color : 'white',} ,
-      {
+      {      
+        shadow : {
+        active : false,
+        offset : {x : 0 , y : 8},
+        blur : 16,
+        spread : 0,
+        color : "#000000"
+      },
       border : {
           width : 0,
           radius : 0,
@@ -84,6 +98,13 @@ export default {
   methods: {
     addCard() {
       const newCard = {
+        shadow : {
+        active : false,
+        offset : {x : 0 , y : 8},
+        blur : 16,
+        spread : 0,
+        color : "#000000"
+      },
          border : {
           width : 0,
           radius : 0,
@@ -261,6 +282,22 @@ export default {
             }
           }
         })  
+      },
+      handleShadowBtn(value){
+        this.cardData.map(card=>{
+          if(card.id===this.focusOn) card.shadow.active = value
+        })
+      },
+      handleShadow(value,option){
+         this.cardData.map(card=>{
+          if(card.id===this.focusOn) {
+            if(option==='x') card.shadow.offset.x = value
+            else if(option==='y') card.shadow.offset.y = value
+            else if(option==='color') card.shadow.color = value
+            else if(option==='blur') card.shadow.blur = value
+            else card.shadow.spread = value
+          }
+        })
       }
     },
     mounted(){

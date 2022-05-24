@@ -11,7 +11,7 @@
                 </div>
         </div>
         <div class="row g-0 p-0 d-flex align-items-baseline ">
-            <p class="parameter-label col-6 ps-3 ">Background</p>
+            <p class="parameter-label col-6 ps-3 ">Colors</p>
                 <b-dropdown id="dropdown-1" text="Change Background" class="my-2 col-6" >
                     <b-dropdown-item @click="changeCardBackground('white')">White</b-dropdown-item>
                     <b-dropdown-item @click="changeCardBackground('light gray')">Light Gray</b-dropdown-item>

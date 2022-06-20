@@ -1,6 +1,7 @@
 <template>
   <div class="container-fluid  p-0">
-            
+                <h4 class="parameter mx-0 ps-3">Button</h4>
+
             <div class="row g-0 p-0 d-flex align-items-baseline">
                 <p class="parameter-label col-6 ps-3 ">Button Size</p>
                 <b-dropdown id="dropdown-1" :text="buttonSize" class="my-2 col-6" >

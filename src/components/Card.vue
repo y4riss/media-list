@@ -10,10 +10,10 @@
       </b-col>
       <b-col   class="p-4" sm="12" md="8" > 
         <b-card-title>
-        <p contenteditable="true" @dblclick="modifyText">{{title}}</p>
+        <p  @dblclick="modifyText">{{textInput.title}}</p>
        </b-card-title>
-        <p contenteditable="true" @dblclick="modifyText" style="max-width: 100%;">{{text}}</p>
-       <a href="#" v-if="Sbutton" contenteditable="true" class="btn" :class="[buttonSize,buttonColor]" role="button" aria-pressed="true">Primary link</a>
+        <p  @dblclick="modifyText" style="max-width: 100%;">{{textInput.paragraph}}</p>
+       <a href="#" v-if="Sbutton"  class="btn" :class="[buttonSize,buttonColor]" role="button" aria-pressed="true">{{ textInput.button }}</a>
 
       </b-col>
     </b-row>
@@ -27,11 +27,9 @@
 
 
 export default {
-    props: ['img','Sbutton' , 'imgLeft','showDeleteBtn','bgcolor','border','corner','buttonSize','buttonColor','shadow'] ,
+    props: ['img','Sbutton' , 'imgLeft','showDeleteBtn','bgcolor','border','corner','buttonSize','buttonColor','shadow','textInput'] ,
     data(){
         return{
-            text : 'This is a wider card with supporting text as a natural lead-in to additional content,This is a wider card with supporting text as a natural lead-in to additional content',
-            title : 'Heading',
             colorClass: {
               text: null ,
               background: null

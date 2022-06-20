@@ -17,7 +17,7 @@
                         <label for="BackGroundFile">
                             <b-icon icon="camera"  variant="light" aria-hidden="true" style="cursor: pointer;"></b-icon>
                         </label>
-                        <input class="form-control" type="file" accept="image/*" id="BackGroundFile" @change="uploadImg">
+                        <input class="form-control" type="file" accept="image/*" id="BackGroundFile" @change="uploadImgBackground">
                     </div>
                     <input type="color" class="form-control form-control-color border-0" id="exampleColorInput" value="#FFFFFF" @change="changeBackground" style="background: #3e3e46" title="Choose your color">
                     <div></div>
@@ -58,7 +58,7 @@ export default {
         handleMouseLeave(e){
             this.$emit('handleMouseLeave',e)
         },
-        uploadImg(e){
+        uploadImgBackground(e){
              this.$emit('uploadImgBackground',e)
         },
     }

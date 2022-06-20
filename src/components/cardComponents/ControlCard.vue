@@ -123,7 +123,7 @@
 
 <script>
 export default {
-    props : ['cardData','focusOn'],
+    props : ['options'],
     data(){
         return{
             width : 0,
@@ -159,6 +159,8 @@ export default {
         handleShadowBtn(e){
             if(e.target.textContent == 'None'){
             this.active = false
+            this.spread = this.blur = this.offsetX = this.offsetY = 0
+            this.shadowColor = "#000000"
             this.$emit('handleShadowBtn',false)
 
             }
@@ -170,14 +172,14 @@ export default {
         },
         handleShadow(e,option){
 
-this.$emit('handleShadow',e.target.value,option)
+        this.$emit('handleShadow',e.target.value,option)
         }
     },
     watch : {
-        focusOn : function()
-        {
-                 this.cardData.map(card =>{
-                 if(card.id === this.focusOn){
+        options : {
+            handler(){
+                 this.options.cardData.map(card =>{
+                 if(card.id === this.options.focusOn){
                 this.active = card.shadow.active
                 this.spread = card.shadow.spread
                 this.blur = card.shadow.blur
@@ -189,9 +191,13 @@ this.$emit('handleShadow',e.target.value,option)
                 this.width = card.border.width
                 this.radius = card.border.radius
                 this.color = card.border.color
+                return
                 }})
+            },
+        deep : true
                 
-        }
+        },
+
     }
 
 }
